@@ -1,11 +1,12 @@
-class GamesController < ApplicationController
+class Admin::GamesController < ApplicationController
+  layout "admin"
   # GET /games
   # GET /games.json
   def index
     @games = Game.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # { render :action => "index", :layout => "layouts_admin" }
       format.json { render json: @games }
     end
   end
@@ -44,7 +45,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+        format.html { redirect_to [:admin, @game], notice: 'Game was successfully created.' }
         format.json { render json: @game, status: :created, location: @game }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|  
       if @game.update_attributes(params[:game])
-        format.html { redirect_to @game, notice: 'Game was successfully updated.' }
+        format.html { redirect_to [:admin, @game], notice: 'Game was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +77,7 @@ class GamesController < ApplicationController
     @game.destroy
 
     respond_to do |format|
-      format.html { redirect_to games_url }
+      format.html { redirect_to admin_games_url }
       format.json { head :no_content }
     end
   end
