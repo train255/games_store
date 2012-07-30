@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @game.cover_image.thumb('64x64#').url %>
+
 <p>
   <b>Name:</b>
   <%= @game.name %>
@@ -9,7 +11,6 @@
   <b>Info:</b>
   <%= @game.info %>
 </p>
-
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
