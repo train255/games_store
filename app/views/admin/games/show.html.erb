@@ -1,16 +1,14 @@
 <p id="notice"><%= notice %></p>
+<div class="avatar">
+  <%= image_tag @game.cover_image.thumb('100x100#').url %>
+</div>
+<div class="name">
+  <p><b><%= @game.name %></b></p>
+</div>
 
-<%= image_tag @game.cover_image.thumb('64x64#').url %>
-
-<p>
-  <b>Name:</b>
-  <%= @game.name %>
-</p>
-
-<p>
-  <b>Info:</b>
-  <%= @game.info %>
-</p>
+<div class="info">
+  <p><%= @game.info %></p>
+</div>
 
 <%= link_to 'Edit', edit_admin_game_path(@game) %> |
 <%= link_to 'Back', admin_games_path %>
