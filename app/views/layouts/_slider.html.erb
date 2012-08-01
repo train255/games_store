@@ -5,21 +5,10 @@
 </script>
 
 <div id='coin-slider'>
-  <a href="img01_url" target="_blank">
-    <img src='assets/img1.jpg' >
-    <span>
-	  Peter Parker, an outcast high-schooler, is bitten by a mutated spider and finds himself developing amazing abilities. He soon has to make life-altering choices, master his powers and shape his destiny to become a hero that can stand against the Lizard and his minions, who have invaded the city. Become the Amazing Spider-Man to free the streets of New York, fighting and weaving your way through 10 huge levels including Central Park, the Port District, the Museum District and more.
-    </span>
+<% @games.each do |game| %>
+  <a href="#">
+    <%= image_tag game.banner.thumb('900x260#').url %>
+    <span><%= game.info %></span>
   </a>
-  
-  <a href="imgN_url">
-    <img src='assets/img2.jpg' >
-  </a>
-  
-  <a href="imgN_url">
-    <img src='assets/img3.jpg' >
-    <span>
-    The official Ice Age: Continental Drift mobile game is here! Scrat's nutty pursuit of the accursed acorn, which he's been after since the dawn of time, has world-changing consequences - a continental cataclysm that triggers the greatest adventure of all. Join Scrat, Manny, Diego and Sid on a wild journey through 13 levels spread across 5 icy environments. 
-    </span>
-  </a>
+<% end %>
 </div>

@@ -18,4 +18,7 @@ class Game
   field :category, type: String
   field :link, type: String
 
+  def self.game_hot
+    Game.find(:all, :conditions => { is_hot: true })
+  end
 end

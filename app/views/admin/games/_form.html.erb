@@ -27,7 +27,11 @@
   <div class="field">
     <%= f.label "Banner:" %>
     <%= f.file_field :banner %>
-  </div> 
+  </div>
+  <div class="field">
+    <%= f.label "Hot Game" %>
+    <%= f.check_box :is_hot %>
+  </div>
   
   <div class="actions">
     <%= f.submit %>
