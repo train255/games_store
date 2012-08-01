@@ -1,0 +1,43 @@
+<ul class="nav nav-list">
+  <li class="nav-header">
+  Caterogies
+  </li>
+  <li class="active">
+  <a href="#">Action</a>
+  </li>
+  <li>
+  <a href="#">Sport</a>
+  </li>
+  
+  <li class="nav-header">
+  News
+  </li>
+  <li>
+  <a href="#">New 1</a>
+  </li>
+  <li>
+  <a href="#">New 2</a>
+  </li>
+  
+  <li class="nav-header">
+  Supports
+  </li>
+  <li>
+  <a href="#">Support 1</a>
+  </li>
+  <li>
+  <a href="#">Support 2</a>
+  </li>
+</ul>
+
+<script>
+$('.nav-list li').click(function(e) {
+  $('.nav-list li').removeClass('active');
+  var $this = $(this);
+  if (!$this.hasClass('active')) {
+    $this.addClass('active');
+  }
+  e.preventDefault();
+});
+
+</script>

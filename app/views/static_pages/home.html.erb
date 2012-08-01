@@ -1,4 +1,38 @@
 <%= render 'layouts/slider' %>
+<%= javascript_include_tag "bootstrap-tab" %>
 
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="row-fluid">
+  <div class="span3">
+    <div class="well sidebar-nav">
+    <%= render 'layouts/nav' %>
+    </div>
+  </div>
+
+  <div class="span9">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#newgame" data-toggle="tab">New Games</a></li>
+      <li><a href="#hotgame" data-toggle="tab">Hot Games</a></li>
+    </ul>
+    
+    <div class="tab-content">
+      <div class="tab-pane active" id="newgame">newgame...</div>
+      <div class="tab-pane" id="hotgame">
+        <div class="row">
+          <% @games_hot.each do |game| %>
+            <div class="span3">
+            <%= image_tag game.cover_image.thumb('100x100#').url %>
+            <p><a class="btn" href="#">Download</a></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$('a[data-toggle="tab"]').on('shown', function (e) {
+  e.target // activated tab
+  e.relatedTarget // previous tab
+})
+</script>

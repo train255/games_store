@@ -1,3 +1,6 @@
+<%= stylesheet_link_tag    "coin-slider-styles", :media => "all" %>
+<%= javascript_include_tag "coin-slider" %>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#coin-slider').coinslider({ width: 900, height: 260, navigation: true, delay: 5000 });
@@ -5,7 +8,7 @@
 </script>
 
 <div id='coin-slider'>
-<% @games.each do |game| %>
+<% @games_hot.each do |game| %>
   <a href="#">
     <%= image_tag game.banner.thumb('900x260#').url %>
     <span><%= game.info %></span>
