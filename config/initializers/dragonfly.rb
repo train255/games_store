@@ -1,4 +1,4 @@
-require 'assets'
+require 'dragonfly'
 app = Dragonfly[:images]
 
 # Configure to use ImageMagick, Rails defaults, and the Mongo data store
