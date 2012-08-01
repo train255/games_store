@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
+<div class="banner">
+  <%= image_tag @game.banner.thumb('900x260#').url %>
+</div>
 <div class="avatar">
   <%= image_tag @game.cover_image.thumb('100x100#').url %>
 </div>
