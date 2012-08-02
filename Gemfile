@@ -8,6 +8,7 @@ gem 'bootstrap-sass', '2.0.0'
 
 gem "mongoid", "2.4.12"
 gem "bson_ext"
+gem 'simple_form'
 
 # Gems used only for assets and not required
 # in production environments by default.

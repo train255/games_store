@@ -28,7 +28,17 @@
     <%= f.label "Banner:" %>
     <%= f.file_field :banner %>
   </div> 
-  
+ 
+  <%= f.simple_fields_for :game_images do |game_image| %>
+    <%= game_image.input :image, as: :file %>
+    <%#= game_image.input :_destroy, as: :radio %>
+    <% if controller.action_name == "edit" %>
+      <div class="preview-img">
+        <%= image_tag game_image.object.image.thumb('100x100').url if game_image.object.image %>
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

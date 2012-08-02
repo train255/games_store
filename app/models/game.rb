@@ -18,4 +18,5 @@ class Game
   field :category, type: String
   field :link, type: String
 
+  has_many :game_images, autosave: true
 end
