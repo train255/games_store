@@ -1,4 +1,6 @@
 <%= javascript_include_tag "bootstrap-tab" %>
+<%= javascript_include_tag "bootstrap-tooltip" %>
+<%= javascript_include_tag "bootstrap-popover" %>
 
 <ul class="nav nav-tabs">
   <li class="active"><a href="#newgame" data-toggle="tab">New Games</a></li>
@@ -10,7 +12,8 @@
   <div class="row">
     <% @games_new.each do |game| %>
     <div class="span2">
-      <%= image_tag game.cover_image.thumb('100x100#').url %>
+      <%= image_tag(game.cover_image.thumb('100x100#').url,
+      class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description ) %>
       <p><b><%= game.name %></b></p>
       <p><a class="btn" href="#">Download</a></p>
     </div>
@@ -21,7 +24,8 @@
   <div class="row">
     <% @games_hot.each do |game| %>
     <div class="span2">
-      <%= image_tag game.cover_image.thumb('100x100#').url %>
+      <%= image_tag(game.cover_image.thumb('100x100#').url,
+      class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description ) %>
       <p><b><%= game.name %></b></p>
       <p><a class="btn" href="#">Download</a></p>
     </div>
@@ -35,4 +39,12 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
   e.target // activated tab
   e.relatedTarget // previous tab
 })
+
+$(function () {
+  $(".element_popover").popover({
+    offset: 5,
+    placement: 'left'
+  });
+});
+
 </script>
