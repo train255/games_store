@@ -2,7 +2,7 @@ class Game
   include Mongoid::Document
   field :name, type: String
   field :info, type: String
-
+  
   field :banner_uid
   field :banner_name
   image_accessor :banner
