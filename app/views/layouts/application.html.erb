@@ -10,7 +10,18 @@
 <body>
   <%= render 'layouts/header' %>
   <div class="container">
-    <%= yield %>
+    <%= render 'layouts/slider' %>
+    <div class="row-fluid">
+      <div class="span3">
+        <div class="well sidebar-nav">
+        <%= render 'layouts/nav' %>
+        </div>
+      </div>
+      
+      <div class="span9">
+        <%= yield %>
+      </div>
+    </div>
     <%= render 'layouts/footer' %>
   </div>
 </body>
