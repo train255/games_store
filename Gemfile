@@ -11,6 +11,7 @@ gem 'mongoid_spacial'
 gem "bson_ext"
 gem 'mongoid_globalize'
 gem 'simple_form'
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
