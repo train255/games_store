@@ -18,7 +18,7 @@ class Game
   field :category, type: String
   field :link, type: String
 
-  has_many :game_images
+  # has_many :game_images
 
   def self.game_hot
     Game.find(:all, :conditions => { is_hot: true })
