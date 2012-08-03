@@ -1,8 +1,8 @@
 class StaticPagesController < ApplicationController
-  @homepage = false
+  @actionpage = ""
 
   def home
-    @homepage = true
+    @actionpage = "home"
     @games_hot = Game.game_hot
     @games_new = Game.all
     @games_new = @games_new.reverse
@@ -18,6 +18,7 @@ class StaticPagesController < ApplicationController
   end
 
   def show
+    @actionpage = "show"
     @game = Game.find(params[:id])
   end
 end
