@@ -31,7 +31,18 @@
   <div class="field">
     <%= f.label "Banner:" %>
     <%= f.file_field :banner %>
-  </div>
+  </div> 
+ 
+  <%#= f.simple_fields_for :game_images do |game_image| %>
+    <%#= game_image.input :image, as: :file %>
+    <%#= game_image.input :_destroy, as: :radio %>
+    <%# if controller.action_name == "edit" %>
+      <!-- <div class="preview-img"> -->
+        <%#= image_tag game_image.image.thumb('100x100').url if game_image.image_uid %>
+      <!-- </div> -->
+    <%# end %>
+  <%# end %>
+
   <div class="field">
     <%= f.label "Hot Game" %>
     <%= f.check_box :is_hot %>
