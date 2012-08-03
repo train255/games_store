@@ -18,5 +18,10 @@ class Game
   field :category, type: String
   field :link, type: String
 
-  has_many :game_images, autosave: true
+  # has_many :game_images, autosave: true
+
+  def self.game_hot
+    Game.find(:all, :conditions => { is_hot: true })
+  end
 end
+

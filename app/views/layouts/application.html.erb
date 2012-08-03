@@ -4,15 +4,24 @@
   <title>GamesStore</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= stylesheet_link_tag    "coin-slider-styles", :media => "all" %>
-  <%= javascript_include_tag "coin-slider" %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %> 
 </head>
 <body>
   <%= render 'layouts/header' %>
   <div class="container">
-    <%= yield %>
+    <%= render 'layouts/slider' %>
+    <div class="row-fluid">
+      <div class="span3">
+        <div class="well sidebar-nav">
+        <%= render 'layouts/nav' %>
+        </div>
+      </div>
+      
+      <div class="span9">
+        <%= yield %>
+      </div>
+    </div>
     <%= render 'layouts/footer' %>
   </div>
 </body>

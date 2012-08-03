@@ -4,7 +4,7 @@ class Admin::GamesController < ApplicationController
   # GET /games.json
   def index
     @games = Game.all
-
+    
     respond_to do |format|
       format.html # { render :action => "index", :layout => "layouts_admin" }
       format.json { render json: @games }
@@ -27,7 +27,7 @@ class Admin::GamesController < ApplicationController
   def new
     @game = Game.new
 
-    @game.game_images.build
+    # @game.game_images.build
 
     respond_to do |format|
       format.html # new.html.erb

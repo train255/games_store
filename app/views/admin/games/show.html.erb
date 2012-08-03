@@ -2,15 +2,22 @@
 <div class="banner">
   <%= image_tag @game.banner.thumb('900x260#').url %>
 </div>
-<div class="avatar">
-  <%= image_tag @game.cover_image.thumb('100x100#').url %>
-</div>
-<div class="name">
-  <p><b><%= @game.name %></b></p>
+
+<div class="show_game">
+  <div class="avatar">
+    <%= image_tag @game.cover_image.thumb('100x100#').url %>
+  </div>
+  <div class="name">
+    <p><b><%= @game.name %></b></p>
+  </div>
+
+  <div class="info">
+    <p><%= @game.info %></p>
+  </div>
 </div>
 
 <div class="info">
-  <p><%= @game.info %></p>
+  <p><%= @game.is_hot %></p>
 </div>
 
 <%= link_to 'Edit', edit_admin_game_path(@game) %> |
