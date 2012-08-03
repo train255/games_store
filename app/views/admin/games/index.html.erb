@@ -5,7 +5,7 @@
     <tr>
       <th width="10%"></th>
       <th width="20%">Name</th>
-      <th width="60%">Info</th>
+
       <th></th>
       <th></th>
       <th></th>
@@ -16,7 +16,7 @@
       <tr>
         <td><%= image_tag game.cover_image.thumb('100x100#').url %></td>
         <td><%= game.name %></td>
-        <td><%= game.info %></td>
+
         <td><%= link_to '<i class="icon-eye-open"></i>'.html_safe, [:admin, game] %></td>
         <td><%= link_to '<i class="icon-edit"></i>'.html_safe, edit_admin_game_path(game) %></td>
         <td><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, [:admin, game], method: :delete, data: { confirm: 'Are you sure?' } %></td>
