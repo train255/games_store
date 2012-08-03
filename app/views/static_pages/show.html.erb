@@ -1,0 +1,13 @@
+<div class="show_game">
+  <div class="avatar">
+    <%= image_tag @game.cover_image.thumb('100x100#').url %>
+  </div>
+  <div class="name">
+    <p><b><%= @game.name %></b></p>
+  </div>
+
+  <div class="info">
+    <p><%= @game.info.gsub("\n","<br>").html_safe %></p>
+  </div>
+
+</div>

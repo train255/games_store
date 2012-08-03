@@ -8,9 +8,14 @@
   <%= render 'layouts/shim' %> 
 </head>
 <body>
+  
   <%= render 'layouts/header' %>
   <div class="container">
-    <%= render 'layouts/slider' %>
+    <% if @homepage %>
+      <%= render 'layouts/slider' %> 
+    <% else %>
+      <%= render 'layouts/banner' %>
+    <% end %>
     <div class="row-fluid">
       <div class="span3">
         <div class="well sidebar-nav">

@@ -4,6 +4,7 @@ GamesStore::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'  
+  match '/show', to: 'static_pages#show'  
 
   match '/media/:dragonfly/:file_name', :to => Dragonfly[:images]
   
