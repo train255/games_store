@@ -12,7 +12,7 @@
   </div>
 
   <div class="info">
-    <p><%= @game.info %></p>
+    <p><%= @game.info.gsub("\n","<br>").html_safe %></p>
   </div>
 
 </div>

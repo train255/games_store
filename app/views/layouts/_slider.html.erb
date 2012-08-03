@@ -11,7 +11,7 @@
 <% @games_hot.each do |game| %>
   <a href="#">
     <%= image_tag game.banner.thumb('900x260#').url %>
-    <span><%= game.description %></span>
+    <span><%= game.description.gsub("\n","<br>").html_safe %></span>
   </a>
 <% end %>
 </div>
