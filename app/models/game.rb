@@ -2,7 +2,7 @@ class Game
   include Mongoid::Document
   field :name, type: String
   field :info, type: String
-  
+
   field :banner_uid
   field :banner_name
   image_accessor :banner
@@ -18,7 +18,7 @@ class Game
   field :category, type: String
   field :link, type: String
 
-  # has_many :game_images, autosave: true
+  has_many :game_images
 
   def self.game_hot
     Game.find(:all, :conditions => { is_hot: true })

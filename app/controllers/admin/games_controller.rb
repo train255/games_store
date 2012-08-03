@@ -27,7 +27,7 @@ class Admin::GamesController < ApplicationController
   def new
     @game = Game.new
 
-    # @game.game_images.build
+    @game.game_images.build
 
     respond_to do |format|
       format.html # new.html.erb

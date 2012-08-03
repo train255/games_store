@@ -19,11 +19,7 @@
   <div class="field">
     <%= f.label :info %><br />
     <%= f.text_field :info %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
+  </div>  
   <div class="field">
     <%= f.label "Avatar:" %>
     <%= f.file_field :cover_image %>
@@ -33,15 +29,15 @@
     <%= f.file_field :banner %>
   </div> 
  
-  <%#= f.simple_fields_for :game_images do |game_image| %>
-    <%#= game_image.input :image, as: :file %>
+  <%= f.simple_fields_for :game_images do |game_image| %>
+    <%= game_image.input :image, as: :file %>
     <%#= game_image.input :_destroy, as: :radio %>
-    <%# if controller.action_name == "edit" %>
-      <!-- <div class="preview-img"> -->
-        <%#= image_tag game_image.image.thumb('100x100').url if game_image.image_uid %>
-      <!-- </div> -->
-    <%# end %>
-  <%# end %>
+    <% if controller.action_name == "edit" %>
+      <div class="preview-img">
+        <%= image_tag game_image.image.thumb('100x100').url if game_image.image_uid %>
+      </div>
+    <% end %>
+  <% end %>
 
   <div class="field">
     <%= f.label "Hot Game" %>
