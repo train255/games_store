@@ -1,5 +1,7 @@
 class Game
   include Mongoid::Document
+  include Mongoid::Timestamps
+  
   field :name, type: String
   field :info, type: String
 
@@ -22,6 +24,10 @@ class Game
 
   def self.game_hot
     Game.find(:all, :conditions => { is_hot: true })
+  end
+  
+  def self.game_new
+    Game.desc(:created_at)
   end
 end
 
