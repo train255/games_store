@@ -25,4 +25,8 @@ class StaticPagesController < ApplicationController
     @actionpage = "show"
     @game = Game.find(params[:id])
   end
+
+  def test_orastream_widget
+    render 'test_orastream_widget', layout: false
+  end
 end
