@@ -15,7 +15,7 @@ class Game
   image_accessor :cover_image
 
   field :is_hot, type: Boolean, default: false
-  field :price, type: Float
+  field :price, type: Float, default: 0
   field :like, type: Boolean, default: false
   field :link, type: String
 
