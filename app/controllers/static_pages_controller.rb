@@ -25,6 +25,12 @@ class StaticPagesController < ApplicationController
       @games_hot = Game.game_hot.page(params[:page]).per(2)
     end
   end
+  
+  def news
+    @actionpage = "home"
+    @games_hot = Game.game_hot.page(params[:page]).per(2)
+    @news = News.find(params[:news])
+  end
 
   def help
   end
