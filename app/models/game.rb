@@ -35,9 +35,9 @@ class Game
 
   def game_related
     Game.where(category_id: self.category_id) - [self]
+  end 
   
   def self.game_new
     Game.desc(:created_at)
   end
 end
-
