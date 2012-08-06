@@ -17,17 +17,27 @@ class Game
   field :is_hot, type: Boolean, default: false
   field :price, type: Float, default: 0
   field :like, type: Boolean, default: false
-  field :category, type: String
   field :link, type: String
+
+  belongs_to :category
+  validates :name, :category, presence: true
+  delegate :name, to: :category, prefix: true, allow_nil: true
+
+  def self.names_ids
+    all.map { |sc| ["#{sc.category_name} > #{sc.name}", sc.id] }.sort_by { |x| x.first }
+  end
 
   # has_many :game_images
 
   def self.game_hot
     Game.find(:all, :conditions => { is_hot: true })
   end
+
+  def game_related
+    Game.where(category_id: self.category_id) - [self]
+  end 
   
   def self.game_new
     Game.desc(:created_at)
   end
 end
-

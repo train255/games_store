@@ -80,6 +80,9 @@ GEM
     mongoid_globalize (0.2.1)
       bson_ext (~> 1.5)
       mongoid (~> 2.4)
+    mongoid_rateable (0.1.7)
+      bson_ext
+      mongoid
     mongoid_spacial (0.2.16)
       activesupport (~> 3.0)
       mongoid (>= 2.3.0)
@@ -156,6 +159,7 @@ DEPENDENCIES
   kaminari
   mongoid (= 2.4.12)
   mongoid_globalize
+  mongoid_rateable
   mongoid_spacial
   pry
   rack-cache
