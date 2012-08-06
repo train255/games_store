@@ -1,13 +1,14 @@
 <ul class="nav nav-list">
+  <% @caterogies = Category.all %>
   <li class="nav-header">
   Caterogies
   </li>
-  <li class="active">
-  <a href="#">Action</a>
+  <% @caterogies.each do |caterogy| %>
+  <li class="<%= 'active' if params[:category] == caterogy.id.to_s %>">
+    <a href="<%= root_path %>?category=<%= caterogy.id %>"><%= caterogy.name %></a>
   </li>
-  <li>
-  <a href="#">Sport</a>
-  </li>
+  <% end %>
+  <br/>
   
   <li class="nav-header">
   News
@@ -18,6 +19,7 @@
   <li>
   <a href="#">New 2</a>
   </li>
+  <br/>
   
   <li class="nav-header">
   Supports
@@ -29,15 +31,3 @@
   <a href="#">Support 2</a>
   </li>
 </ul>
-
-<script>
-$('.nav-list li').click(function(e) {
-  $('.nav-list li').removeClass('active');
-  var $this = $(this);
-  if (!$this.hasClass('active')) {
-    $this.addClass('active');
-  }
-  e.preventDefault();
-});
-
-</script>

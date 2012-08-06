@@ -3,10 +3,19 @@
 
 <ul class="nav nav-tabs">
    <li>
-      <a href=<%= root_path %> >New Games</a>
+      <% if @cateid != nil %>
+      <a href="<%= root_path %>?category=<%= @cateid %>" >New Games</a>
+      <% else %>
+      <a href="<%= root_path %>" >New Games</a>
+      <% end %>
    </li>
    <li class="active">
-      <a href=<%= hot_game_path%> >Hot Games</a>
+      <%# binding.pry %>
+      <% if @cateid != nil %>
+      <a href="<%= hot_game_path %>?category=<%= @cateid %>" >Hot Games</a>
+      <% else %>
+      <a href="<%= hot_game_path %>" >Hot Games</a>
+      <% end %>
    </li>
 </ul>
     
@@ -17,6 +26,7 @@
       class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description),
       {:action => 'show', :controller => 'static_pages', id: game} %>
       <p><b><%= game.name %></b></p>
+      <p><div class="rateit"></div></p>
       <p>
       <% if game.price == 0 %>
       <%= link_to image_tag("download.png"), '#' %>
