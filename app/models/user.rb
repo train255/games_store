@@ -40,6 +40,7 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
   def admin?
     email == 'chanh@chuachat.us'
   end

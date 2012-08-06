@@ -24,6 +24,7 @@ class StaticPagesController < ApplicationController
   def show
     @actionpage = "show"
     @game = Game.find(params[:id])
+    @microposts = @game.microposts
   end
 
   def test_orastream_widget

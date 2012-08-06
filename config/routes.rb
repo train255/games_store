@@ -12,6 +12,11 @@ GamesStore::Application.routes.draw do
 
   match '/media/:dragonfly/:file_name', :to => Dragonfly[:images]
   
+  resources :games do 
+    resources :microposts do
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -57,14 +62,8 @@ GamesStore::Application.routes.draw do
       # Directs /admin/products/* to Admin::ProductsController
       # (app/controllers/admin/products_controller.rb)
       resources :games
-      root :to => 'games#index'
-    end
-
-    namespace :admin do
-      # Directs /admin/products/* to Admin::ProductsController
-      # (app/controllers/admin/products_controller.rb)
       resources :categories
-      root :to => 'categories#index'
+      root :to => 'games#index'
     end
 
   # You can have the root of your site routed with "root"

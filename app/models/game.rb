@@ -22,6 +22,7 @@ class Game
   belongs_to :category
   validates :name, :category, presence: true
   delegate :name, to: :category, prefix: true, allow_nil: true
+  has_many :microposts
 
   def self.names_ids
     all.map { |sc| ["#{sc.category_name} > #{sc.name}", sc.id] }.sort_by { |x| x.first }
