@@ -7,6 +7,7 @@ GamesStore::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'  
   match '/show', to: 'static_pages#show'  
+  match '/test_orastream_widget', to: 'static_pages#test_orastream_widget'
 
   match '/media/:dragonfly/:file_name', :to => Dragonfly[:images]
   
