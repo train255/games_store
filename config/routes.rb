@@ -3,6 +3,7 @@ GamesStore::Application.routes.draw do
 
   root :to => 'static_pages#home'
   
+  match '/hot_game',to: 'static_pages#hot_game'
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'  

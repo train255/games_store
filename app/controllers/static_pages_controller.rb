@@ -3,9 +3,13 @@ class StaticPagesController < ApplicationController
 
   def home
     @actionpage = "home"
-    @games_hot = Game.game_hot
-    @games_new = Game.all
-    @games_new = @games_new.reverse
+    @games_hot = Game.game_hot.page(params[:page]).per(2)
+    @games_new = Game.game_new.page(params[:page]).per(2)
+  end
+  
+  def hot_game
+    @actionpage = "home"
+    @games_hot = Game.game_hot.page(params[:page]).per(2)
   end
 
   def help

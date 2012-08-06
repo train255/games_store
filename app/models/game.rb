@@ -1,5 +1,7 @@
 class Game
   include Mongoid::Document
+  include Mongoid::Timestamps
+  
   field :name, type: String
   field :info, type: String
 
@@ -33,6 +35,9 @@ class Game
 
   def game_related
     Game.where(category_id: self.category_id) - [self]
+  
+  def self.game_new
+    Game.desc(:created_at)
   end
 end
 

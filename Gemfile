@@ -13,6 +13,7 @@ gem 'mongoid_globalize'
 gem 'simple_form'
 gem 'devise'
 gem 'mongoid_rateable'
+gem 'kaminari'
 
 # Gems used only for assets and not required
 # in production environments by default.
