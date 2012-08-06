@@ -17,7 +17,13 @@
       class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description),
       {:action => 'show', :controller => 'static_pages', id: game} %>
       <p><b><%= game.name %></b></p>
-      <p><a class="btn" href="#">Download</a></p>
+      <p>
+      <% if game.price == 0 %>
+      <%= link_to image_tag("download.png"), '#' %>
+      <% else %>
+      <%= link_to image_tag("buynow.png"), '#' %>
+      <% end %>
+      </p>
    </div>
    <% end %>
 </div>

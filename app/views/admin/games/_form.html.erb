@@ -31,7 +31,11 @@
   <div class="field">
     <%= f.label "Banner:" %>
     <%= f.file_field :banner %>
-  </div> 
+  </div>
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
  
   <%#= f.simple_fields_for :game_images do |game_image| %>
     <%#= game_image.input :image, as: :file %>
