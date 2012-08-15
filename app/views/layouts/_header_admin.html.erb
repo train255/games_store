@@ -3,6 +3,11 @@
     <div class="container">
       <%= link_to "Games store", '/', id: "logo",  class: "brand"%>
       <nav>
+        <ul class="nav">
+          <li class="<%= 'active' if controller.controller_name == 'categories' %>">
+             <%= link_to "Game", admin_games_path, method: :get %>
+          </li>
+        </ul>
         <ul class="nav pull-right">
           <li><%= link_to "Home",    '/' %></li>
           <li><%= link_to "Help",    '#' %></li>

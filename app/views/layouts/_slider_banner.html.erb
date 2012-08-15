@@ -1,0 +1,22 @@
+<div id="myCarousel" class="carousel slide">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <%# binding.pry%>
+    <% @games_hot.each_with_index do |game, index| %>
+    <div class="item <%= index == 0 ? 'active' : '' %>">
+      <%= image_tag game.banner.thumb('1200x320#').url %>
+      <div class="carousel-caption">
+        <h4><%= game.name %></h4>
+        <p><%= game.description.gsub("\n","<br>").html_safe %></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $('.carousel').carousel()
+</script>
