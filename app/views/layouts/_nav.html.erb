@@ -10,15 +10,15 @@
   <% end %>
   <br/>
   
+  <% @news = News.all %>
   <li class="nav-header">
   News
   </li>
+  <% @news.each do |news| %>
   <li>
-  <a href="#">New 1</a>
+  <a href="<%= news_path %>?news=<%= news.id %>"><%= news.title %></a>
   </li>
-  <li>
-  <a href="#">New 2</a>
-  </li>
+  <% end %>
   <br/>
   
   <li class="nav-header">

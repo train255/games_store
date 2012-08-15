@@ -15,10 +15,25 @@
           </li>
         </ul>
 
-        <div class='navbar-search pull-right' >
-          <%= text_field_tag :location, nil, placeholder: 'Search', class: 'search-query span4' %>
-        </div>
+
+        <!-- <div class='navbar-search pull-right' >
+          <%#= text_field_tag :location, nil, placeholder: 'Search', class: 'search-query span4' %>
+        </div> -->
+
+        <ul class="nav pull-right">
+          <li><%= link_to "Home",    '/' %></li>
+          <li><%= link_to "Help",    '#' %></li>
+          <% if signed_in? %>
+            <li><%= link_to current_user.email, '#' %>
+            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <li><%= link_to "Sign in", "#myModal", html_options = { :"data-toggle" => "modal"} %></li>
+          <% end %>
+        </ul>
+
       </nav>
     </div>
   </div>
 </header>
+
+<%= render "static_pages/signin" %>
