@@ -13,11 +13,10 @@ GamesStore::Application.routes.draw do
   match '/test_orastream_widget', to: 'static_pages#test_orastream_widget'
 
   match '/media/:dragonfly/:file_name', :to => Dragonfly[:images]
-  
-  resources :games do 
-    resources :microposts do
-    end
-  end
+
+  # resources :games do 
+    resources :microposts
+  # end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

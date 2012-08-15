@@ -16,6 +16,19 @@
   </select>
   <div class="rateit" data-rateit-backingfld="#backing2b"></div>
   
+  <div id="fb-root"></div>
+  <script>
+    // Load the SDK Asynchronously
+    (function(d){
+       var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement('script'); js.id = id; js.async = true;
+       js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+       ref.parentNode.insertBefore(js, ref);
+     }(document));
+  </script>
+
+<div class="fb-like"></div>
   <div class="info">
     <p><%= @game.info.gsub("\n","<br>").html_safe %></p>
   </div>
@@ -27,19 +40,10 @@
     </ul>
     <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
       <div class="tab-pane active" id="comment">
-        <%= render 'static_pages/comment' %>
+        <%= render "static_pages/comment" %>
       </div>
       <div class="tab-pane" id="related">
-        <div class="row">
-          <% @game.game_related.each do |game| %>
-            <div class="span2">
-              <%= image_tag(game.cover_image.thumb('100x100#').url,
-              class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description ) %>
-              <p><b><%= game.name %></b></p>
-              <p><a class="btn" href="#">Download</a></p>
-            </div>
-          <% end %>
-        </div>
+        <%= render 'static_pages/related' %>
       </div>
     </div>
   </div>
