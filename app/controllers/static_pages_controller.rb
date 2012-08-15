@@ -5,19 +5,20 @@ class StaticPagesController < ApplicationController
   def home
     # binding.pry
     @actionpage = "home"
+    @games_hot_banner = Game.game_hot.limit(3)
 
     if params[:category]
       @cateid = params[:category]
       @games_new = Game.where(:category_id => params[:category]).game_new.page(params[:page]).per(2)
-      @games_hot = Game.where(:category_id => params[:category]).game_hot.page(params[:page]).per(2)
     else
-      @games_hot = Game.game_hot.page(params[:page]).per(2)
       @games_new = Game.game_new.page(params[:page]).per(2)
     end
   end
   
   def hot_game
     @actionpage = "home"
+    @games_hot_banner = Game.game_hot.limit(3)
+    
     if params[:category]
       @games_hot = Game.where(:category_id => params[:category]).game_hot.page(params[:page]).per(2)
       @cateid = params[:category]

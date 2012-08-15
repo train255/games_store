@@ -2,12 +2,12 @@
   <!-- Carousel items -->
   <div class="carousel-inner">
     <%# binding.pry%>
-    <% @games_hot.each_with_index do |game, index| %>
+    <% @games_hot_banner.each_with_index do |game_hot_banner, index| %>
     <div class="item <%= index == 0 ? 'active' : '' %>">
-      <%= image_tag game.banner.thumb('1200x320#').url %>
+      <%= image_tag game_hot_banner.banner.thumb('1200x320#').url %>
       <div class="carousel-caption">
-        <h4><%= game.name %></h4>
-        <p><%= game.description.gsub("\n","<br>").html_safe %></p>
+        <h4><%= game_hot_banner.name %></h4>
+        <p><%= game_hot_banner.description.gsub("\n","<br>").html_safe %></p>
       </div>
     </div>
     <% end %>
