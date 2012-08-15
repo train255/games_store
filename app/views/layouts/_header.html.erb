@@ -4,15 +4,20 @@
       <%= link_to "sample app", '/', id: "logo",  class: "brand"%>
       <nav>
         <ul class="nav">
-          <li class="<%= 'active' if controller.controller_name == 'categories' %>">
+          <li class="<%= 'active' if controller.controller_name == 'games' %>">
              <%= link_to "Game", admin_games_path, method: :get %>
           </li>
+          <li class="<%= 'active' if controller.controller_name == 'categories' %>">
+             <%= link_to "Category", admin_categories_path, method: :get %>
+          </li>
+          <li class="<%= 'active' if controller.controller_name == 'microposts' %>">
+             <%= link_to "Micropost", microposts_path, method: :get %>
+          </li>
         </ul>
-        <ul class="nav pull-right">
-          <li><%= link_to "Home",    '/' %></li>
-          <li><%= link_to "Help",    '#' %></li>
-          <li><%= link_to "Sign in", '#' %></li>
-        </ul>
+
+        <div class='navbar-search pull-right' >
+          <%= text_field_tag :location, nil, placeholder: 'Search', class: 'search-query span4' %>
+        </div>
       </nav>
     </div>
   </div>

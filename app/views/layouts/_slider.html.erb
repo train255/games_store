@@ -3,14 +3,14 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#coin-slider').coinslider({ width: 900, height: 260, navigation: true, delay: 5000 });
+		$('#coin-slider').coinslider({ width: 1200, height: 320, navigation: true, delay: 5000 });
 	});
 </script>
 
 <div id='coin-slider'>
 <% @games_hot.each do |game| %>
   <a href="#">
-    <%= image_tag game.banner.thumb('900x260#').url %>
+    <%= image_tag game.banner.thumb('1200x320#').url %>
     <span><%= game.description.gsub("\n","<br>").html_safe %></span>
   </a>
 <% end %>
