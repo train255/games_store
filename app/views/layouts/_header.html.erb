@@ -11,9 +11,16 @@
         <ul class="nav pull-right">
           <li><%= link_to "Home",    '/' %></li>
           <li><%= link_to "Help",    '#' %></li>
-          <li><%= link_to "Sign in", '#' %></li>
+          <% if signed_in? %>
+            <li><%= link_to current_user.email, '#' %>
+            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <li><%= link_to "Sign in", "#myModal", html_options = { :"data-toggle" => "modal"} %></li>
+          <% end %>
         </ul>
       </nav>
     </div>
   </div>
 </header>
+
+<%= render "static_pages/signin" %>

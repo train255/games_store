@@ -29,9 +29,13 @@
       <p><div class="rateit"></div></p>
       <p>
       <% if game.price == 0 %>
-      <%= link_to image_tag("download.png"), '#' %>
+        <%= link_to image_tag("download.png"), '#' %>
       <% else %>
-      <%= link_to image_tag("buynow.png"), '#' %>
+        <% if signed_in? %>
+          <%= link_to image_tag("buynow.png"), "#" %>
+        <% else%>
+          <%= link_to image_tag("buynow.png"), "#myModal", html_options = { :"data-toggle" => "modal"} %>
+        <% end %>
       <% end %>
       </p>
    </div>

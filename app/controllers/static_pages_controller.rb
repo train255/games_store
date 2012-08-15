@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
   def home
     # binding.pry
     @actionpage = "home"
-    
+
     if params[:category]
       @cateid = params[:category]
       @games_new = Game.where(:category_id => params[:category]).game_new.page(params[:page]).per(2)
