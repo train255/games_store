@@ -1,11 +1,19 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-    <div class="container header">
-      <%= link_to "Games store", '/', id: "logo",  class: "brand"%>
+    <div class="container container_header">
+    <%= image_tag "icon.png", size: "24x24", id: "logo" %>
+      <%# link_to "Games store", '/', id: "logo",  class: "brand"%>
       <nav>
-        <ul class="nav header-right">
-          <li><%= link_to "Home",    '/' %></li>
-          <li><%= link_to "Help",    '#' %></li>
+        <ul class="nav pull-left">
+        <li class="<%= 'active' if controller.action_name == 'home' %>" >
+          <%= link_to "Home", root_path %>
+          </li>
+          <li>
+          <%= link_to "Help",    '#' %>
+          </li>
+          <li class="<%= 'active' if controller.action_name == 'new' && controller.controller_name == 'registrations' %>" >
+          <%= link_to "Sign up", new_user_registration_path %>
+          </li>
           <% if signed_in? %>
             <li><%= link_to current_user.email, '#' %>
             <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
