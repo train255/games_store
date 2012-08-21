@@ -100,3 +100,45 @@ footer {
     }
   }
 }
+
+.form-search,
+.form-inline,
+.form-horizontal {
+  input,
+  textarea,
+  select,
+  .help-inline,
+  .uneditable-input,
+  .input-prepend,
+  .input-append {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  // Re-hide hidden elements due to specifity
+  .hide {
+    display: none;
+  }
+}
+
+form.simple_form.form-horizontal{
+  .controls{
+    margin-left: 190px;
+  }
+  .form-actions input[type='submit']{
+    margin-left: 30px;
+  }
+  .control-group.hidden{
+    margin-bottom: 0px;
+  }
+  textarea{
+    overflow-y: hidden;
+    resize: none;
+    min-height: 90px;
+  }
+  div.hiddendiv{
+    display: none;
+    white-space: pre-wrap;
+    overflow: hidden;
+    word-wrap: break-word;  
+  }
+}

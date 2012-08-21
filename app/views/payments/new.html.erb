@@ -1,0 +1,28 @@
+<%= simple_form_for @payment do |f| %>
+  <% if @payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+      <ul>
+      <% @payment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.input :card_number %>
+  <%= f.input :first_name %>
+  <%= f.input :middle_name %>
+  <%= f.input :last_name %>
+  <%= f.input :address_line_1 %>
+  <%= f.input :address_line_2 %>
+  <%= f.input :city %>
+  <%= f.input :postal_code %>
+  <%= f.input :telephone %>
+  <%= f.input :email %>
+
+  <div class="actions">
+    <%= f.submit "Review and Continute" %>
+  </div>
+<% end %>

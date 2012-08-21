@@ -48,7 +48,6 @@ class StaticPagesController < ApplicationController
     @comments = @game.comments
     @comment = current_user.comments.build if signed_in?
     @game_images = @game.game_images
-    # binding.pry
   end
 
   def test_orastream_widget
