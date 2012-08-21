@@ -1,13 +1,13 @@
 <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example"  >
   <table class="table table-striped">
     <tbody>
-      <% @microposts.each do |micropost| %>
+      <% @comments.each do |comment| %>
         <tr>
           <td><b>
-            <% if micropost.user %>
-              <%= micropost.user.email %> 
+            <% if comment.user %>
+              <%= comment.user.email %> 
             <% else %> (none)
-            <% end %>:</b></br> <%= micropost.content %></td>
+            <% end %>:</b></br> <%= comment.content %></td>
         </tr>
       <% end %>
     </tbody>
@@ -15,12 +15,12 @@
 </div>
 
 <% if current_user %> 
-  <%= simple_form_for [@game, @micropost] do |f| %>
-    <% if @micropost.errors.any? %>
+  <%= simple_form_for [@game, @comment] do |f| %>
+    <% if @comment.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@micropost.errors.count, "error") %> prohibited this micropost from being saved:</h2>
+        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
         <ul>
-        <% @micropost.errors.full_messages.each do |msg| %>
+        <% @comment.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>

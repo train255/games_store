@@ -1,0 +1,29 @@
+<%= simple_form_for [@game, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %><br />
+     <%= f.text_area :content, size: "60x5"%>
+  </div>
+  
+  <%#= f.input :game, collection: Game.all, include_blank: false %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<%#= link_to 'Show all', comments_path %>

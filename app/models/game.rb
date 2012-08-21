@@ -22,7 +22,7 @@ class Game
   belongs_to :category
   validates :name, :category, presence: true
   delegate :name, to: :category, prefix: true, allow_nil: true
-  has_many :microposts
+  has_many :comments
   has_many :game_images
 
   def self.names_ids

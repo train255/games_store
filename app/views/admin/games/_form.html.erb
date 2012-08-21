@@ -1,4 +1,4 @@
-<%= simple_form_for [:admin, @game], :html => {:multipart => true} do |f| %>
+<%= simple_form_for [:admin, @game], :html => {:multipart => true, :class => "form-horizontal"} do |f| %>
   <% if @game.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
@@ -12,11 +12,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  
+  <%= f.input :name%>
   <%= f.input :category, collection: Category.all, include_blank: false %>
 
   <div class="field">

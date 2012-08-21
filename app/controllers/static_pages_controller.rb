@@ -45,9 +45,10 @@ class StaticPagesController < ApplicationController
   def show
     @actionpage = "show"
     @game = Game.find(params[:id])
-    @microposts = @game.microposts
-    @micropost = current_user.microposts.build if signed_in?
+    @comments = @game.comments
+    @comment = current_user.comments.build if signed_in?
     @game_images = @game.game_images
+    # binding.pry
   end
 
   def test_orastream_widget

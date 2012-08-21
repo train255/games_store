@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="15%">Name</th>
+      <th width="60%">Comment</th>
+      <th width="20%">Game</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.name %></td> 
+        <td><%= comment.content %></td>
+        <td><%= comment.game.name %></td>
+        <td><%= link_to '<i class="icon-eye-open"></i>'.html_safe, comment %></td>
+        <td><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New comment', new_comment_path %>
