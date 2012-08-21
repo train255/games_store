@@ -28,6 +28,7 @@ end
 
 gem 'jquery-rails'
 gem 'rack-cache', :require => 'rack/cache'
+gem 'rmagick'
 gem 'dragonfly', '~>0.9.12'
 gem "pry"
 gem 'rb-readline'

@@ -1,2 +1,37 @@
-<%= render "microposts/index" %>
-<%#= render "microposts/new" %>
+<div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example"  >
+  <table class="table table-striped">
+    <tbody>
+      <% @microposts.each do |micropost| %>
+        <tr>
+          <td><b>
+            <% if micropost.user %>
+              <%= micropost.user.email %> 
+            <% else %> (none)
+            <% end %>:</b></br> <%= micropost.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% if current_user %> 
+  <%= simple_form_for [@game, @micropost] do |f| %>
+    <% if @micropost.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@micropost.errors.count, "error") %> prohibited this micropost from being saved:</h2>
+        <ul>
+        <% @micropost.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :comment%>
+    <%= f.text_area :content, size: "80x5"%>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% end %>

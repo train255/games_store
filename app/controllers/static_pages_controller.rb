@@ -3,7 +3,6 @@ class StaticPagesController < ApplicationController
   @cateid = ""
   
   def home
-    # binding.pry
     @actionpage = "home"
     @games_hot_banner = Game.game_hot.limit(3)
 
@@ -29,6 +28,7 @@ class StaticPagesController < ApplicationController
   
   def news
     @actionpage = "home"
+
     @games_hot = Game.game_hot.page(params[:page]).per(2)
     @news = News.find(params[:news])
   end
@@ -46,6 +46,8 @@ class StaticPagesController < ApplicationController
     @actionpage = "show"
     @game = Game.find(params[:id])
     @microposts = @game.microposts
+    @micropost = current_user.microposts.build if signed_in?
+    @game_images = @game.game_images
   end
 
   def test_orastream_widget

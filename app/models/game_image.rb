@@ -6,7 +6,7 @@ class GameImage
 
   belongs_to :game
 
-  def image_url(size = "200x200")
-    "http://#{Settings.host}#{image.thumb(size).url}" if image
+  def image_url(version = :game)
+    "http://#{Settings.host}#{image.send(version).url}"
   end
 end

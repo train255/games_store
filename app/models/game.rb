@@ -23,12 +23,11 @@ class Game
   validates :name, :category, presence: true
   delegate :name, to: :category, prefix: true, allow_nil: true
   has_many :microposts
+  has_many :game_images
 
   def self.names_ids
     all.map { |sc| ["#{sc.category_name} > #{sc.name}", sc.id] }.sort_by { |x| x.first }
   end
-
-  # has_many :game_images
 
   def self.game_hot
     Game.find(:all, :conditions => { is_hot: true })

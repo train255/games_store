@@ -14,9 +14,9 @@ GamesStore::Application.routes.draw do
 
   match '/media/:dragonfly/:file_name', :to => Dragonfly[:images]
 
-  # resources :games do 
+  resources :games do 
     resources :microposts
-  # end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
