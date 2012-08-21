@@ -63,6 +63,7 @@ GamesStore::Application.routes.draw do
       # Directs /admin/products/* to Admin::ProductsController
       # (app/controllers/admin/products_controller.rb)
       resources :games
+      resources :users
       resources :categories
       resources :news
       root :to => 'games#index'

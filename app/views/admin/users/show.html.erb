@@ -1,0 +1,12 @@
+<ul class="breadcrumb">
+  <li><%= link_to "Home", admin_root_path %></li> <span class="divider">/</span>
+  <li><%= link_to "Users", admin_users_path %></li> <span class="divider">/</span>
+  <li class="active">Show</li>
+</ul>
+
+<h1>Show User</h1><br/>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
