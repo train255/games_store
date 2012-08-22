@@ -2,29 +2,29 @@
 <%= javascript_include_tag "bootstrap-popover" %>
 
 <ul class="nav nav-tabs">
-   <li class="active">
+	<li class="<%= 'active' if params[:game] == 'new' || params[:game].nil? %>">
       <% if @cateid != nil %>
-      <a href="<%= root_path %>?category=<%= @cateid %>" >New Games</a>
+      <a href="<%= root_path %>?category=<%= @cateid %>&game=new" >New Games</a>
       <% else %>
-      <a href="<%= root_path %>" >New Games</a>
+      <a href="<%= root_path %>?game=new" >New Games</a>
       <% end %>
    </li>
-   <li>
+   <li class="<%= 'active' if params[:game] == 'hot' %>">
       <%# binding.pry %>
       <% if @cateid != nil %>
-      <a href="<%= hot_game_path %>?category=<%= @cateid %>" >Hot Games</a>
+      <a href="<%= root_path %>?category=<%= @cateid %>&game=hot" >Hot Games</a>
       <% else %>
-      <a href="<%= hot_game_path %>" >Hot Games</a>
+      <a href="<%= root_path %>?game=hot" >Hot Games</a>
       <% end %>
    </li>
 </ul>
 
 <div class="row">
-   <% @games_new.each do |game| %>
+   <% @games.each do |game| %>
    <div class="span2">
       <%= link_to image_tag(game.cover_image.thumb('100x100#').url,
       class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description),
-      {:action => 'show', :controller => 'static_pages', id: game} %>
+      {:action => 'show', :controller => 'games', id: game} %>
       <p><b><%= game.name %></b></p>
       <p><div class="rateit"></div></p>
       <p>
@@ -46,7 +46,7 @@
    </div>
    <% end %>
 </div>
-<%= paginate @games_new %>
+<%= paginate @games %>
 
 <script>
 $(function () {
