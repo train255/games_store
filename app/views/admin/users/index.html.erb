@@ -5,6 +5,8 @@
 
 <h1>Listing users</h1>
 
+<%= link_to 'New user', new_admin_user_path, class: "btn btn-primary" %>
+
 <table class="table table-striped" style="width:70% !important;">
   <thead>
     <tr>
@@ -18,7 +20,7 @@
   <tbody>
     <% @users.each_with_index do |user, index| %>
       <tr>
-        <td><%= index+1 %></td>
+        <td><%= index + 1 + (params[:page].present? ? (params[:page].to_i - 1)*@per_page : 0) %></td>
         <td><%= user.email %></td>
 
         <td><%= link_to '<i class="icon-eye-open"></i>'.html_safe, [:admin, user] %></td>
@@ -28,6 +30,4 @@
     <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New user', new_admin_user_path %>
+<%= paginate @users%>

@@ -1,20 +1,58 @@
-<p id="notice"><%= notice %></p>
-<div class="banner">
-  <%= image_tag @game.banner.thumb('1200x320#').url %>
-</div>
+<ul class="breadcrumb">
+  <li><%= link_to "Home", admin_root_path %></li> <span class="divider">/</span>
+  <li><%= link_to "Games", admin_games_path %></li> <span class="divider">/</span>
+  <li class="active">Show</li>
+</ul>
 
-<div class="show_game">
-  <div class="avatar">
-    <%= image_tag @game.cover_image.thumb('100x100#').url %>
-  </div>
-  <div class="name">
-    <p><b><%= @game.name %></b></p>
-  </div>
+<h1>Show Game</h1><br/>
 
-  <div class="info">
-    <p><%= @game.info.gsub("\n","<br>").html_safe %></p>
-  </div>
+<div class="tabbable" style="margin-bottom: 18px;">
+  <ul class="nav nav-tabs">
+  <li class="active"><a href="#information" data-toggle="tab">Information</a></li>
+  <li class=""><a href="#comments" data-toggle="tab">Comments</a></li>
+  </ul>
+  
+  <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+    <div class="tab-pane active" id="information">
+      <p>
+        <%= image_tag @game.cover_image.thumb('100x100#').url %>
+      </p>
+      <p>
+        <b>Name:</b>
+        <%= @game.name %>
+      </p>
+      <p>
+        <b>Category:</b>
+        <%= @game.category.name %>
+      </p>
+      <p>
+        <b>Information:</b>
+        <%= @game.info.gsub("\n","<br>").html_safe %>
+      </p>
+      <p>
+        <b>Hot Game:</b>
+        <%= @game.is_hot %>
+      </p>
+      <p>
+        <b>Price:</b>
+        <%= @game.price %>
+      </p>
+    </div>
 
+    <div class="tab-pane" id="comments">
+    <table class="table table-striped">
+      <% @comments.each_with_index do |comment, index| %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= comment.user.email %></td>
+        <td><%= comment.content %></td>
+      </tr>
+      <% end %>
+    </table>
+    <%= paginate @comments %>
+    </div>
+    
+  </div>
 </div>
 
 <%= link_to 'Edit', edit_admin_game_path(@game) %> |

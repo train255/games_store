@@ -25,11 +25,11 @@
   </div>  
   <div class="field">
     <%= f.label "Avatar:" %>
-    <%= f.file_field :cover_image %>
+    <%= f.file_field :cover_image, required: true %>
   </div>  
   <div class="field">
     <%= f.label "Banner:" %>
-    <%= f.file_field :banner %>
+    <%= f.file_field :banner, required: true %>
   </div>
   <div class="field">
     <%= f.label :price %>

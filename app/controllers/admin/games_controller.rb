@@ -2,11 +2,14 @@ class Admin::GamesController < ApplicationController
   layout "admin"
  
   def index
-    @games = Game.all
+    @per_page = 5;
+    @games = Game.all.page(params[:page]).per(@per_page);
   end
 
   def show
+    @per_page = 5
     @game = Game.find(params[:id])
+    @comments = @game.comments.page(params[:page]).per(@per_page)
     @game_images = @game.game_images
   end
 

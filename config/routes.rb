@@ -66,6 +66,7 @@ GamesStore::Application.routes.draw do
       resources :users
       resources :categories
       resources :news
+      resources :comments
       root :to => 'games#index'
     end
 

@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
   layout "admin"
   def index
-    @users = User.all
+    @per_page = 5
+    @users = User.all.page(params[:page]).per(@per_page)
   end
   
   def show
