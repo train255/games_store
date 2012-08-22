@@ -27,7 +27,7 @@
       <script type="text/javascript">
         $("#rateit").bind('rated', function (event, value) { 
           console.log(value);
-          $.get("/games/x", {value: value, game_id: "abc"}, function(response){
+          $.get("/games/rate", {value: value, game_id: "abc"}, function(response){
             console.log(response);
           });
         });

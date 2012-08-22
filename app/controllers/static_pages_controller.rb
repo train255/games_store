@@ -55,7 +55,7 @@ class StaticPagesController < ApplicationController
   end
 
   def rate_game
-    binding.pry
+    # binding.pry
     render text: "Successfully"
   end
 end
