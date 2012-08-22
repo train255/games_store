@@ -1,18 +1,34 @@
-<div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example"  >
-  <table class="table table-striped">
-    <tbody>
-      <% @comments.each do |comment| %>
-        <tr>
-          <td><b>
-            <% if comment.user %>
-              <%= comment.user.email %> 
-            <% else %> (none)
-            <% end %>:</b></br> <%= comment.content %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<% if @comments.count > 4 %>
+  <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example"  >
+    <table class="table table-striped">
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><b>
+              <% if comment.user %>
+                <%= comment.user.email %> 
+              <% else %> (none)
+              <% end %>:</b></br> <%= comment.content %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+    <table class="table table-striped">
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><b>
+              <% if comment.user %>
+                <%= comment.user.email %> 
+              <% else %> (none)
+              <% end %>:</b></br> <%= comment.content %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+<% end %>
 
 <% if current_user %> 
   <%= simple_form_for [@game, @comment] do |f| %>
@@ -31,7 +47,7 @@
     <%= f.text_area :content, size: "80x5"%>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Post"%>
     </div>
   <% end %>
 <% end %>

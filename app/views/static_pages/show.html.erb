@@ -1,35 +1,52 @@
 <div class="show_game">
-  <div class="avatar">
-    <%= image_tag @game.cover_image.thumb('128x128#').url %>
-  </div>
-  <div class="name">
-    <h2><b><%= @game.name %></b></h2>
-  </div>
-
-  <select id="backing2b">
-    <option value="0">Bad</option>
-    <option value="1">Nomal</option>
-    <option value="2">OK</option>
-    <option value="3">Great</option>
-    <option value="4">Perfect</option>
-    <option value="5">Excellent</option>
-  </select>
-  <div class="rateit" data-rateit-backingfld="#backing2b"></div>
+  <div class="row">
+    <div class="span2" style="padding-right: 20px">
+      <%= image_tag @game.cover_image.thumb('128x128#').url %>
+      <% if @game.price == 0 %>
+        <% if @game.link %>
+          <%= link_to image_tag("download.png"), @game.link %>
+        <% else %>
+          <%= link_to image_tag("download.png"), "http://games.brothersoft.com/free-cat-games-download-s1.html"%>
+        <% end %>
+      <% else %>
+        <% if signed_in? %>
+          <%= link_to image_tag("buynow.png"), '/payments/new' %>
+          <%# binding.pry %>
+        <% else%>
+          <%= link_to image_tag("buynow.png"), "#myModal", html_options = { :"data-toggle" => "modal"} %>
+        <% end %>
+      <% end %>
+    </div>
   
-  <div id="fb-root"></div>
-  <script>
-    // Load the SDK Asynchronously
-    (function(d){
-       var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement('script'); js.id = id; js.async = true;
-       js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-       ref.parentNode.insertBefore(js, ref);
-     }(document));
-  </script>
+    <div class="span4" style="margin-left: 0px">
+      <div class="name">
+        <h2><b><%= @game.name %></b></h2>
+      </div>
 
-  <div class="fb-like"></div>
-
+      <div class="rateit" id="rateit"></div>
+      <script type="text/javascript">
+        $("#rateit").bind('rated', function (event, value) { 
+          console.log(value);
+          $.get("/games/rate", {value: value, game_id: "abc"}, function(response){
+            console.log(response);
+          });
+        });
+      </script> 
+      
+      <div id="fb-root"></div>
+        <script>
+          // Load the SDK Asynchronously
+          (function(d){
+             var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement('script'); js.id = id; js.async = true;
+             js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+             ref.parentNode.insertBefore(js, ref);
+           }(document));
+        </script>
+      <div class="fb-like"></div>
+    </div>
+  </div>
   <div class="info">
     <p><%= @game.info.gsub("\n","<br>").html_safe %></p>
   </div>
