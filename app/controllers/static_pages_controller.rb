@@ -53,4 +53,9 @@ class StaticPagesController < ApplicationController
   def test_orastream_widget
     render 'test_orastream_widget', layout: false
   end
+
+  def rate_game
+    binding.pry
+    render text: "Successfully"
+  end
 end

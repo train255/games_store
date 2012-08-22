@@ -16,7 +16,7 @@ class Game
 
   field :is_hot, type: Boolean, default: false
   field :price, type: Float, default: 0
-  field :like, type: Boolean, default: false
+  field :rate, type: Float, default: 0
   field :link, type: String
 
   belongs_to :category

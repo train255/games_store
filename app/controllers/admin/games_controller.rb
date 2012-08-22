@@ -44,4 +44,5 @@ class Admin::GamesController < ApplicationController
     @game.destroy
     redirect_to admin_games_url
   end
+
 end

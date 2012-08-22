@@ -29,10 +29,15 @@
       <p><div class="rateit"></div></p>
       <p>
       <% if game.price == 0 %>
-        <%= link_to image_tag("download.png"), '#' %>
+        <% if game.link %>
+          <%= link_to image_tag("download.png"), game.link %>
+        <% else %>
+          <%= link_to image_tag("download.png"), "http://games.brothersoft.com/free-cat-games-download-s1.html"%>
+        <% end %>
       <% else %>
         <% if signed_in? %>
-          <%= link_to image_tag("buynow.png"), "#" %>
+          <%= link_to image_tag("buynow.png"), '/payments/new' %>
+          <%# binding.pry %>
         <% else%>
           <%= link_to image_tag("buynow.png"), "#myModal", html_options = { :"data-toggle" => "modal"} %>
         <% end %>

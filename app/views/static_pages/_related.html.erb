@@ -5,10 +5,19 @@
       class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description),
       {:action => 'show', :controller => 'static_pages', id: game} %>
       <p><b><%= game.name %></b></p>
-      <% if game.price == 0 %>
-        <%= link_to image_tag("download.png"), '#' %>
+      <% if @game.price == 0 %>
+        <% if @game.link %>
+          <%= link_to image_tag("download.png"), @game.link %>
+        <% else %>
+          <%= link_to image_tag("download.png"), "http://games.brothersoft.com/free-cat-games-download-s1.html"%>
+        <% end %>
       <% else %>
-        <%= link_to image_tag("buynow.png"), '#' %>
+        <% if signed_in? %>
+          <%= link_to image_tag("buynow.png"), '/payments/new' %>
+          <%# binding.pry %>
+        <% else%>
+          <%= link_to image_tag("buynow.png"), "#myModal", html_options = { :"data-toggle" => "modal"} %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
