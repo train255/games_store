@@ -3,7 +3,7 @@
     <div class="span2">
       <%= link_to image_tag(game.cover_image.thumb('100x100#').url,
       class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description),
-      {:action => 'show', :controller => 'static_pages', id: game} %>
+      {:action => 'show', :controller => 'games', id: game} %>
       <p><b><%= game.name %></b></p>
       <% if @game.price == 0 %>
         <% if @game.link %>
