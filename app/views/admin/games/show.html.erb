@@ -14,44 +14,27 @@
   
   <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
     <div class="tab-pane active" id="information">
-      <p>
-        <%= image_tag @game.cover_image.thumb('100x100#').url %>
-      </p>
-      <p>
-        <b>Name:</b>
-        <%= @game.name %>
-      </p>
-      <p>
-        <b>Category:</b>
-        <%= @game.category.name %>
-      </p>
-      <p>
-        <b>Information:</b>
-        <%= @game.info.gsub("\n","<br>").html_safe %>
-      </p>
-      <p>
-        <b>Hot Game:</b>
-        <%= @game.is_hot %>
-      </p>
-      <p>
-        <b>Price:</b>
-        <%= @game.price %>
-      </p>
+      <p><%= image_tag @game.cover_image.thumb('100x100#').url %></p>
+      <p><b>Name:</b><%= @game.name %></p>
+      <p><b>Category:</b><%= @game.category.name %></p>
+      <p><b>Information:</b><%= @game.info.gsub("\n","<br>").html_safe %></p>
+      <p><b>Hot Game:</b><%= @game.is_hot %></p>
+      <p><b>Price:</b><%= @game.price %></p>
     </div>
 
     <div class="tab-pane" id="comments">
-    <table class="table table-striped">
-      <% @comments.each_with_index do |comment, index| %>
-      <tr>
-        <td><%= index+1 %></td>
-        <td><%= comment.user.email %></td>
-        <td><%= comment.content %></td>
-      </tr>
-      <% end %>
-    </table>
-    <%= paginate @comments %>
+      <div class="scrollspy-example">
+        <table class="table table-striped">
+          <% @comments.each_with_index do |comment, index| %>
+            <tr>
+              <td width="5%" style="text-align: center"><%= index+1 %></td>
+              <td width="20%"><%= comment.user.email %></td>
+              <td><%= comment.content.gsub("\n","<br>").html_safe %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
     </div>
-    
   </div>
 </div>
 

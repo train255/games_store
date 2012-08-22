@@ -7,29 +7,29 @@
 <table class="table table-striped" style="width:70% !important;">
   <thead>
     <tr>
-      <th>#</th>
-      <th width="10%"></th>
-      <th width="20%">Name</th>
-      <th>Category</th>
-      <th width="20%">Hot Game</th>
+      <th width="5%">#</th>
+      <th width="10%">Avatar</th>
+      <th width="25%">Name</th>
+      <th width="15%">Category</th>
+      <th width="15%">Hot Game</th>
       <th>Price</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th width="11%"></th>
     </tr>
   </thead>
   <tbody>
     <% @games.each_with_index do |game, index| %>
       <tr>
-      <td><%= index + 1 + (params[:page].present? ? (params[:page].to_i - 1)*@per_page : 0) %></td>
+      <td style="text-align: center"><%= index + 1 + (params[:page].present? ? (params[:page].to_i - 1)*@per_page : 0) %></td>
         <td><%= image_tag game.cover_image.thumb('100x100#').url if game.cover_image_uid %></td>
         <td><%= game.name %></td>
         <td><%= game.category.name %></td>
         <td><%= game.is_hot %></td>
-        <td><%= game.price %></td>
-        <td><%= link_to '<i class="icon-eye-open"></i>'.html_safe, [:admin, game] %></td>
-        <td><%= link_to '<i class="icon-edit"></i>'.html_safe, edit_admin_game_path(game) %></td>
-        <td><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, [:admin, game], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= game.price %> VND</td>
+        <td>
+          <%= link_to '<i class="icon-eye-open"></i>'.html_safe, [:admin, game] %>
+          <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_admin_game_path(game) %>
+          <%= link_to '<i class="icon-remove-sign"></i>'.html_safe, [:admin, game], method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
 </table>

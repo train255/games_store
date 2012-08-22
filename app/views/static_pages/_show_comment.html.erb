@@ -1,0 +1,13 @@
+<table class="table table-striped">
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><b>
+          <% if comment.user %>
+            <%= comment.user.email %> 
+          <% else %> (none)
+          <% end %>:</b></br> <%= comment.content.gsub("\n","<br>").html_safe %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

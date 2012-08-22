@@ -9,7 +9,7 @@ class Admin::GamesController < ApplicationController
   def show
     @per_page = 5
     @game = Game.find(params[:id])
-    @comments = @game.comments.page(params[:page]).per(@per_page)
+    @comments = @game.comments
     @game_images = @game.game_images
   end
 
