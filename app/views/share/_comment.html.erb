@@ -1,9 +1,9 @@
 <% if @comments.count > 4 %>
   <div class="scrollspy-example"  >
-    <%= render 'show_comment' %>
+    <%= render 'share/show_comment' %>
   </div>
 <% else %>
-  <%= render 'show_comment' %>
+  <%= render 'share/show_comment' %>
 <% end %>
 
 <% if current_user %> 
