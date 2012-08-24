@@ -30,12 +30,18 @@ class GamesController < ApplicationController
     @game_images = @game.game_images
   end
 
-  def test_orastream_widget
-    render 'test_orastream_widget', layout: false
-  end
-
-  def rate_game
+  def rating
     # binding.pry
-    render text: "Successfully"
+    @game = Game.find(params[:id])
+    if Rate.where(game_id: @game.id, user_id: current_user.id).count == 1
+      @rate = Rate.where(game_id: @game.id, user_id: current_user.id).first
+      @rate.update_attribute(:value, params[:value])
+    else
+      @rate = @game.rates.build
+      @rate.value = params[:value]
+      @rate.user_id = current_user.id
+      @rate.save
+    end
+    redirect_to show_path(:id => @game.id)
   end
 end

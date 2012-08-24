@@ -16,7 +16,7 @@ class Game
 
   field :is_hot, type: Boolean, default: false
   field :price, type: Float, default: 0
-  field :rate, type: Float, default: 0
+  # field :rate_average, type: Float, default: 0
   field :link, type: String
 
   belongs_to :category
@@ -24,6 +24,7 @@ class Game
   delegate :name, to: :category, prefix: true, allow_nil: true
   has_many :comments
   has_many :game_images
+  has_many :rates
 
   def self.names_ids
     all.map { |sc| ["#{sc.category_name} > #{sc.name}", sc.id] }.sort_by { |x| x.first }
@@ -39,5 +40,13 @@ class Game
   
   def self.game_new
     Game.desc(:created_at)
+  end
+  
+  def average_rating
+    if rates.count > 0
+      rates.map { |rate| rate.value }.inject{ |sum, el| sum + el }.to_f / rates.count
+    else
+      0
+    end
   end
 end

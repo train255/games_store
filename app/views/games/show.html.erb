@@ -22,16 +22,22 @@
       <div class="name">
         <h2><b><%= @game.name %></b></h2>
       </div>
-
-      <div class="rateit" id="rateit"></div>
-      <script type="text/javascript">
-        $("#rateit").bind('rated', function (event, value) { 
-          console.log(value);
-          $.get("/games/rate", {value: value, game_id: "abc"}, function(response){
-            console.log(response);
-          });
-        });
-      </script> 
+			<input type="hidden" value="<%= @game.id %>" id="gameid">
+			<% if signed_in? %>
+			<%# binding.pry %>
+				<input type="range" value="<%= @game.average_rating %>" min="0" max="5" step="0.5" id="backing2">
+				<div class="rateit" data-rateit-backingfld="#backing2" id="star"></div>
+			<% else %>
+				<div class="rateit" data-rateit-value="<%= @game.average_rating %>" data-rateit-readonly="true"></div>
+			<% end %>
+			
+			<script>
+			$('#star').click(function(event) {
+				rate_value = $("#backing2").val();
+				game_id = $("#gameid").val();
+				location.href = "/games/" + game_id + "/rating?value=" + rate_value;
+			});
+			</script>
       
       <div id="fb-root"></div>
         <script>

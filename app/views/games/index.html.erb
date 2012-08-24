@@ -26,7 +26,9 @@
       class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description),
       {:action => 'show', :controller => 'games', id: game} %>
       <p><b><%= game.name %></b></p>
-      <p><div class="rateit"></div></p>
+      <p>
+				<div class="rateit" data-rateit-value="<%= game.average_rating %>" data-rateit-readonly="true"></div>
+			</p>
       <p>
         <% if game.price == 0 %>
           <% if game.link %>

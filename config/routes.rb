@@ -11,10 +11,12 @@ GamesStore::Application.routes.draw do
   match '/contact', to: 'static_pages#contact'
   
   match '/media/:dragonfly/:file_name', :to => Dragonfly[:images]
-  match '/games/rate', to: 'games#rate_game'
 
   resources :games do 
     resources :comments
+    member do
+      get 'rating'
+    end
   end
 
   resources :payments
