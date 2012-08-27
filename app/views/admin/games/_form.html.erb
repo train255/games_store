@@ -24,12 +24,20 @@
     <%= f.text_area :description, size: "60x5"%>
   </div>  
   <div class="field">
-    <%= f.label "Avatar:" %>
-    <%= f.file_field :cover_image, required: true %>
+    <%= f.input :cover_image, label: "Avatar", as: :file %>
+    <% if controller.action_name == "edit" %>
+      <div class="preview-img">
+        <%= image_tag @game.cover_image.thumb('50x50').url if !@game.cover_image_uid.nil? %>
+      </div>
+    <% end %>
   </div>  
   <div class="field">
-    <%= f.label "Banner:" %>
-    <%= f.file_field :banner, required: true %>
+    <%= f.input :banner, as: :file %>
+    <% if controller.action_name == "edit" %>
+      <div class="preview-img">
+        <%= image_tag @game.banner.thumb('100x100').url if !@game.banner_uid.nil? %>
+      </div>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :price %>
@@ -41,15 +49,15 @@
     <%= f.check_box :is_hot %>
   </div>
   <%= f.input :link %>
-  <%#= f.simple_fields_for :game_images do |game_image| %>
-    <%#= game_image.input :image, as: :file %>
+  <%= f.simple_fields_for :game_images do |game_image| %>
+    <%= game_image.input :image, as: :file %>
     <%#= game_image.input :_destroy, as: :hidden %>
     <%# if controller.action_name == "edit" %>
       <!-- <div class="preview-img"> -->
         <%#= image_tag game_image.image.thumb('100x100').url if game_image.image_uid %>
       <!-- </div> -->
     <%# end %>
-  <%# end %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

@@ -53,6 +53,17 @@
       <div class="fb-like"></div>
     </div>
   </div>
+
+  <% if @game_images.count > 0 %>
+    <div class="listing-images">
+      <% @game_images.each do |game_image| %>
+        <div class="listing-image">
+          <%= image_tag(game_image.image_url) if game_image.image? %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  
   <div class="info">
     <p><%= @game.info.gsub("\n","<br>").html_safe %></p>
   </div>
