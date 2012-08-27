@@ -8,8 +8,8 @@
 
 <div class="tabbable" style="margin-bottom: 18px;">
   <ul class="nav nav-tabs">
-  <li class="active"><a href="#information" data-toggle="tab">Information</a></li>
-  <li class=""><a href="#comments" data-toggle="tab">Comments</a></li>
+    <li class="active"><a href="#information" data-toggle="tab">Information</a></li>
+    <li class=""><a href="#comments" data-toggle="tab">Comments</a></li>
   </ul>
   
   <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
@@ -22,8 +22,8 @@
       <p><b>Price:</b><%= @game.price %></p>
     </div>
 
-    <div class="tab-pane" id="comments">
-      <div class="scrollspy-example">
+    <div class="tab-pane" id="comments" style=" height: 210px; overflow-y: scroll;">
+      <!-- <div class="scrollspy-example"> -->
         <table class="table table-striped">
           <% @comments.each_with_index do |comment, index| %>
             <tr>
@@ -33,7 +33,7 @@
             </tr>
           <% end %>
         </table>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </div>
