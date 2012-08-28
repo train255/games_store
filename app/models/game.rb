@@ -23,7 +23,8 @@ class Game
   validates :name, :category, presence: true
   delegate :name, to: :category, prefix: true, allow_nil: true
   has_many :comments
-  has_many :game_images
+  has_many :game_images, dependent: :destroy, autosave: true
+  accepts_nested_attributes_for :game_images
   has_many :rates
 
   def self.names_ids
