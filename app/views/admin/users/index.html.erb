@@ -7,11 +7,16 @@
 
 <%= link_to 'New user', new_admin_user_path, class: "btn btn-primary" %>
 
+<form class="pull-right">
+  <input type="text" class="input-medium search-query" name="search_text">
+  <button type="submit" class="btn">Search</button>
+</form>
+
 <table class="table table-striped" style="width:70% !important;">
   <thead>
     <tr>
       <th>#</th>
-      <th>Email</th>
+      <th><%= sortable_link('email', params[:direction], admin_users_path) %></th>
       <th></th>
       <th></th>
       <th></th>

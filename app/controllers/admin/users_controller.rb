@@ -1,8 +1,29 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < Admin::ApplicationController
   layout "admin"
   def index
+    if params[:search_text].present?
+      @users = User.fulltext_search(params[:search_text], { :max_results => 100 })
+    else
+      @users = User.all
+    end
+    
     @per_page = 5
-    @users = User.all.page(params[:page]).per(@per_page)
+    if params[:sort_by].present?
+      if params[:direction] == "asc"
+        @users = @users.sort {|a, b| a[params[:sort_by].to_sym].to_s <=> b[params[:sort_by].to_sym].to_s}
+      else
+        @users = @users.sort {|a, b| b[params[:sort_by].to_sym].to_s <=> a[params[:sort_by].to_sym].to_s}
+      end
+    else
+      @users = @users.sort {|a, b| a[:email].to_s <=> b[:email].to_s}
+    end
+    
+    if @users.is_a? Array
+      @users = Kaminari.paginate_array(@users).page(params[:page]).per(@per_page)
+    else
+      @users = @users.page(params[:page]).per(@per_page)
+    end
+
   end
   
   def show

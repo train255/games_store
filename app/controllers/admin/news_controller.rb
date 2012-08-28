@@ -1,4 +1,4 @@
-class Admin::NewsController < ApplicationController
+class Admin::NewsController < Admin::ApplicationController
   layout "admin"
   # GET /news
   # GET /news.json

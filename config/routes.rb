@@ -4,7 +4,6 @@ GamesStore::Application.routes.draw do
 
   root :to => 'games#index'
   match '/show', to: 'games#show'
-  match '/test_orastream_widget', to: 'games#test_orastream_widget'
   match '/news',    to: 'news#show'
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'

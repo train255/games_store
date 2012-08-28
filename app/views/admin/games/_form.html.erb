@@ -1,4 +1,4 @@
-<%= simple_form_for [:admin, @game], :html => {:multipart => true, :class => "form-horizontal"} do |f| %>
+<%= form_for [:admin, @game], :html => {:multipart => true, :class => "form-horizontal"} do |f| %>
   <% if @game.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
@@ -11,36 +11,75 @@
 
     </div>
   <% end %>
+	
+	<div class="control-group">
+		<label class="control-label">Name</label>
+		<div class="controls">
+			<%= f.text_field :name %>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">Category</label>
+		<div class="controls">
+			<%= f.select :category, Category.all.collect {|c| [ c.name, c.id ] }, include_blank: false %>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">Info</label>
+		<div class="controls">
+			<%= f.text_area :info, size: "60x5"%>
+		</div>
+	</div>
 
-  <%= f.input :name%>
-  <%= f.input :category, collection: Category.all, include_blank: false %>
+	<div class="control-group">
+		<label class="control-label">Description</label>
+		<div class="controls">
+			<%= f.text_area :description, size: "60x5"%>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">Avatar</label>
+		<div class="controls">
+			<% if controller.action_name == "new" %>
+				<%= f.file_field :cover_image, required: true %>
+			<% else %>
+				<%= f.file_field :cover_image %>
+			<% end %>
+		</div>
+	</div>
 
-  <div class="field">
-    <%= f.label :info %><br />
-    <%= f.text_area :info, size: "60x5"%>
-  </div>  
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, size: "60x5"%>
-  </div>  
-  <div class="field">
-    <%= f.label "Avatar:" %>
-    <%= f.file_field :cover_image, required: true %>
-  </div>  
-  <div class="field">
-    <%= f.label "Banner:" %>
-    <%= f.file_field :banner, required: true %>
-  </div>
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-  </div>
+  <div class="control-group">
+		<label class="control-label">Banner</label>
+		<div class="controls">
+			<% if controller.action_name == "new" %>
+				<%= f.file_field :banner, required: true %>
+			<% else %>
+				<%= f.file_field :banner %>
+			<% end %>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">Price</label>
+		<div class="controls">
+			<%= f.text_field :price %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label">Hot Game</label>
+		<div class="controls">
+			<%= f.check_box :is_hot %>
+		</div>
+	</div>
+	
+	<!--<div class="field"> 
+		<%#= f.file_field :link %>
+	</div>
   
-  <div class="field">
-    <%= f.label "Hot Game" %>
-    <%= f.check_box :is_hot %>
-  </div>
-  <%= f.input :link %>
   <%#= f.simple_fields_for :game_images do |game_image| %>
     <%#= game_image.input :image, as: :file %>
     <%#= game_image.input :_destroy, as: :hidden %>
@@ -51,7 +90,7 @@
     <%# end %>
   <%# end %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>

@@ -1,6 +1,7 @@
 class Game
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::FullTextSearch
   
   field :name, type: String
   field :info, type: String
@@ -49,4 +50,10 @@ class Game
       0
     end
   end
+  
+  # Can phai chay lenh object.update_attributes()
+  # Game.all.each do |g|
+  #   g.update_attributes()
+  # end
+  fulltext_search_in :name
 end

@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::FullTextSearch
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -44,6 +45,8 @@ class User
   # field :authentication_token, :type => String
 
   def admin?
-    email == 'chanh@chuachat.us'
+    email == 'admin@ymail.com'
   end
+  
+  fulltext_search_in :email
 end

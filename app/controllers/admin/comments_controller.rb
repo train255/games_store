@@ -1,4 +1,4 @@
-class Admin::CommentsController < ApplicationController
+class Admin::CommentsController < Admin::ApplicationController
   layout "admin"
   def index
     @per_page = 5

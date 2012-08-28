@@ -12,7 +12,7 @@ gem "bson_ext"
 gem 'mongoid_globalize'
 gem 'simple_form'
 gem 'devise'
-gem 'mongoid_rateable'
+gem 'mongoid_fulltext'
 gem 'kaminari'
 
 # Gems used only for assets and not required

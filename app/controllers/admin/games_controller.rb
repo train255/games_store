@@ -1,9 +1,36 @@
-class Admin::GamesController < ApplicationController
+class Admin::GamesController < Admin::ApplicationController
   layout "admin"
  
   def index
-    @per_page = 5;
-    @games = Game.all.page(params[:page]).per(@per_page);
+    # binding.pry
+    if params[:search_text].present?
+      @games = Game.fulltext_search(params[:search_text], { :max_results => 100 })
+    else
+      @games = Game.all
+    end
+    
+    @per_page = 5
+    if params[:sort_by] == "average_rating"
+      if params[:direction] == "asc"
+        @games = @games.sort {|a, b| a.average_rating <=> b.average_rating}
+      else
+        @games = @games.sort {|a, b| b.average_rating <=> a.average_rating}
+      end
+    elsif params[:sort_by] == "name" || params[:sort_by] == "price"
+      if params[:direction] == "asc"
+        @games = @games.sort {|a, b| a[params[:sort_by].to_sym].to_s <=> b[params[:sort_by].to_sym].to_s}
+      else
+        @games = @games.sort {|a, b| b[params[:sort_by].to_sym].to_s <=> a[params[:sort_by].to_sym].to_s}
+      end
+    else
+      @games = @games.sort {|a, b| a[:name].to_s <=> b[:name].to_s}
+    end
+    
+    if @games.is_a? Array
+      @games = Kaminari.paginate_array(@games).page(params[:page]).per(@per_page)
+    else
+      @games = @games.page(params[:page]).per(@per_page)
+    end
   end
 
   def show

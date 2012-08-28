@@ -20,6 +20,7 @@
       <p><b>Information:</b><%= @game.info.gsub("\n","<br>").html_safe %></p>
       <p><b>Hot Game:</b><%= @game.is_hot %></p>
       <p><b>Price:</b><%= @game.price %></p>
+			<p><b>Average rating:</b><%= @game.average_rating %></p>
     </div>
 
     <div class="tab-pane" id="comments">
