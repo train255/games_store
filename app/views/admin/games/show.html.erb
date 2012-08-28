@@ -25,10 +25,9 @@
         <b>Image:</b>
           <% if @game_images.count > 0 %>
             <% @game_images.each do |game_image| %>
-              <%#= image_tag game_image.image.thumb('100x100#').url %>
-              <%= image_tag game_image.image_url('200x200#') %>
-              <%# binding.pry %>
-              <%#= image_tag(game_image.image_url) if !game_image.image_uid.nil? %>
+							<div class="preview-img">
+              <%= image_tag game_image.image.thumb('200x200').url %>
+						</div>
             <% end %>
           <% end %>
       </p>

@@ -82,10 +82,10 @@
 		</div>
 	</div>
 	
-  <%= f.input :link %>
+  <%= f.text_field :link %>
 
   <%= f.fields_for :game_images do |game_image| %>
-    <%= game_image.input :image, as: :file %>
+    <%= game_image.file_field :image %>
     <%#= game_image.input :_destroy, as: :hidden %>
     <%# if controller.action_name == "edit" %>
       <!-- <div class="preview-img"> -->
