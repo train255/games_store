@@ -47,6 +47,9 @@
 				<%= f.file_field :cover_image, required: true %>
 			<% else %>
 				<%= f.file_field :cover_image %>
+				<div class="preview-img">
+        	<%= image_tag @game.cover_image.thumb('50x50').url if !@game.cover_image_uid.nil? %>
+      	</div>
 			<% end %>
 		</div>
 	</div>
@@ -58,6 +61,9 @@
 				<%= f.file_field :banner, required: true %>
 			<% else %>
 				<%= f.file_field :banner %>
+				<div class="preview-img">
+        	<%= image_tag @game.banner.thumb('100x100').url if !@game.banner_uid.nil? %>
+      	</div>
 			<% end %>
 		</div>
 	</div>
@@ -76,19 +82,17 @@
 		</div>
 	</div>
 	
-	<!--<div class="field"> 
-		<%#= f.file_field :link %>
-	</div>
-  
-  <%#= f.simple_fields_for :game_images do |game_image| %>
-    <%#= game_image.input :image, as: :file %>
+  <%= f.input :link %>
+
+  <%= f.fields_for :game_images do |game_image| %>
+    <%= game_image.input :image, as: :file %>
     <%#= game_image.input :_destroy, as: :hidden %>
     <%# if controller.action_name == "edit" %>
       <!-- <div class="preview-img"> -->
         <%#= image_tag game_image.image.thumb('100x100').url if game_image.image_uid %>
       <!-- </div> -->
     <%# end %>
-  <%# end %>
+  <% end %>
 
   <div class="form-actions">
     <%= f.submit class: "btn btn-primary"%>

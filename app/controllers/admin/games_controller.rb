@@ -47,6 +47,7 @@ class Admin::GamesController < Admin::ApplicationController
 
   def edit
     @game = Game.find(params[:id])
+    (1 - @game.game_images.count).times { @game.game_images.build }
   end
 
   def create
@@ -62,6 +63,7 @@ class Admin::GamesController < Admin::ApplicationController
 
   def update
     @game = Game.find(params[:id])
+    # binding.pry
     if @game.update_attributes(params[:game])
       redirect_to [:admin, @game], notice: 'Game was successfully updated.' 
     else
