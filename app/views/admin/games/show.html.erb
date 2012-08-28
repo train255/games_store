@@ -22,12 +22,12 @@
       <p><b>Price:</b><%= @game.price %></p>
 			<p><b>Average rating:</b><%= @game.average_rating %></p>
       <p>
-        <b>Image:</b>
+        <b>Image:</b></br>
           <% if @game_images.count > 0 %>
             <% @game_images.each do |game_image| %>
-							<div class="preview-img">
-              <%= image_tag game_image.image.thumb('200x200').url %>
-						</div>
+							<!-- <div class="preview-img"> -->
+              <%= image_tag game_image.image.thumb('200x200#').url %>
+						  <!-- </div> -->
             <% end %>
           <% end %>
       </p>

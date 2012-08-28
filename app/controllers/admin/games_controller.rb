@@ -42,12 +42,12 @@ class Admin::GamesController < Admin::ApplicationController
 
   def new
     @game = Game.new
-    @game.game_images.build
+    5.times { @game.game_images.build }
   end
 
   def edit
     @game = Game.find(params[:id])
-    (1 - @game.game_images.count).times { @game.game_images.build }
+    (5 - @game.game_images.count).times { @game.game_images.build }
   end
 
   def create

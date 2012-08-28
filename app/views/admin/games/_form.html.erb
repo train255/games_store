@@ -82,17 +82,25 @@
 		</div>
 	</div>
 	
-  <%= f.text_field :link %>
-
-  <%= f.fields_for :game_images do |game_image| %>
-    <%= game_image.file_field :image %>
-    <%#= game_image.input :_destroy, as: :hidden %>
-    <%# if controller.action_name == "edit" %>
-      <!-- <div class="preview-img"> -->
-        <%#= image_tag game_image.image.thumb('100x100').url if game_image.image_uid %>
-      <!-- </div> -->
-    <%# end %>
-  <% end %>
+    <div class="control-group">
+    <label class="control-label">Link download</label>
+    <div class="controls">
+      <%= f.text_field :link %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Image</label>
+    <div class="controls">
+      <%= f.fields_for :game_images do |game_image| %>
+        <%= game_image.file_field :image %>
+        </br>
+        <%# if controller.action_name == "edit" %>
+        <%#binding.pry%>
+          <%#= image_tag game_image.image.thumb('100x100').url if game_image.image_uid %>
+        <%# end %>
+      <% end%>
+    </div>  
+  </div>
 
   <div class="form-actions">
     <%= f.submit class: "btn btn-primary"%>
