@@ -27,7 +27,7 @@
       <td style="text-align: center"><%= index + 1 + (params[:page].present? ? (params[:page].to_i - 1)*@per_page : 0) %></td>
         <td><%= image_tag game.cover_image.thumb('100x100#').url if game.cover_image_uid %></td>
 				<td><%= game.average_rating %></td>
-        <td><%= game.name if !game.name.nil? %></td>
+        <td><%#= game.name if !game.name.nil? %></td>
         <td><%= game.category.name %></td>
         <td><%= game.is_hot %></td>
         <td><%= game.price %> VND</td>
