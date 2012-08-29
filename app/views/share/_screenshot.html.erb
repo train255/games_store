@@ -1,0 +1,18 @@
+<div id="id_of_gallery" class="gallery">
+  <ul class="galleryBar">
+		<% if @game_images.count > 0 %>
+			<% @game_images.each do |game_image| %>
+				<li><a href="<%= game_image.image.thumb('600x600').url %>" title="<%= game_image.image_name %>">
+				<%= image_tag game_image.image.thumb('200x200').url %></a></li>
+  		<% end %>
+  	<% end %>
+	</ul>
+</div>
+
+<script>
+	$('#id_of_gallery').gallery({
+		interval: 5500,
+		height: '400px',
+		width: '600px'
+	});
+</script>

@@ -5,23 +5,46 @@ class GamesController < ApplicationController
   def index
     @actionpage = "index"
     @games_hot_banner = Game.game_hot.limit(3)
+    @per_page = 2
+    
     if params[:game] == "hot"
       if params[:category]
         @cateid = params[:category]
-        @games = Game.where(:category_id => params[:category]).game_hot.page(params[:page]).per(2)
+        @games = Game.where(:category_id => params[:category]).game_hot.page(params[:page]).per(@per_page)
       else
-        @games = Game.game_hot.page(params[:page]).per(2)
+        @games = Game.game_hot.page(params[:page]).per(@per_page)
       end
+    elsif params[:game] == "top"
+      if params[:category]
+        @cateid = params[:category]
+        @games = Game.where(:category_id => params[:category]).top_rated
+      else
+        @games = Game.top_rated
+      end
+      @games = Kaminari.paginate_array(@games).page(params[:page]).per(@per_page)
     else
       if params[:category]
         @cateid = params[:category]
-        @games = Game.where(:category_id => params[:category]).game_new.page(params[:page]).per(2)
+        @games = Game.where(:category_id => params[:category]).game_new.page(params[:page]).per(@per_page)
       else
-        @games = Game.game_new.page(params[:page]).per(2)
+        @games = Game.game_new.page(params[:page]).per(@per_page)
       end
     end
   end
 
+  def search
+    @actionpage = "index"
+    @games_hot_banner = Game.game_hot.limit(3)
+    @per_page = 5
+    
+    if params[:search_text].present?
+      @games = Game.fulltext_search(params[:search_text], { :max_results => 100 })
+      @games = Kaminari.paginate_array(@games).page(params[:page]).per(@per_page)
+    else
+      redirect_to root_path
+    end
+  end
+  
   def show
     @actionpage = "show"
     @game = Game.find(params[:id])

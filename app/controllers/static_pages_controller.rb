@@ -7,4 +7,10 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+  
+  def link_download
+    @device = params[:device]
+    @game = Game.find(params[:gameid])
+  end
+  
 end

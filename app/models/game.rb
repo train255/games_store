@@ -52,9 +52,13 @@ class Game
     end
   end
   
+  def self.top_rated
+    Game.all.sort {|a, b| b.average_rating <=> a.average_rating}
+  end
+  
   # Can phai chay lenh object.update_attributes()
   # Game.all.each do |g|
   #   g.update_attributes()
   # end
-  fulltext_search_in :name
+  fulltext_search_in :name, :ngram_width => 1
 end

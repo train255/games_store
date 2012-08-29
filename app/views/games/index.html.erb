@@ -17,10 +17,19 @@
       <a href="<%= root_path %>?game=hot" >Hot Games</a>
       <% end %>
    </li>
+	<li class="<%= 'active' if params[:game] == 'top' %>">
+      <%# binding.pry %>
+      <% if @cateid != nil %>
+      <a href="<%= root_path %>?category=<%= @cateid %>&game=top" >Top Rated</a>
+      <% else %>
+      <a href="<%= root_path %>?game=top" >Top Rated</a>
+      <% end %>
+   </li>
 </ul>
 
 <div class="row">
    <% @games.each do |game| %>
+	
    <div class="span2">
       <%= link_to image_tag(game.cover_image.thumb('100x100#').url,
       class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description),
@@ -30,12 +39,9 @@
 				<div class="rateit" data-rateit-value="<%= game.average_rating %>" data-rateit-readonly="true"></div>
 			</p>
       <p>
+				<%= render "share/choice_device", :gid => game.id %>
         <% if game.price == 0 %>
-          <% if game.link %>
-            <%= link_to image_tag("download.png"), game.link %>
-          <% else %>
-            <%= link_to image_tag("download.png"), "http://games.brothersoft.com/free-cat-games-download-s1.html"%>
-          <% end %>
+          <%= link_to image_tag("download.png"), "##{game.id}", html_options = { :"data-toggle" => "modal"} %>
         <% else %>
           <% if signed_in? %>
             <%= link_to image_tag("buynow.png"), '/payments/new' %>

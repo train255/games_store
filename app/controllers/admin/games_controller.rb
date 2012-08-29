@@ -73,6 +73,9 @@ class Admin::GamesController < Admin::ApplicationController
 
   def destroy
     @game = Game.find(params[:id])
+    @game.comments.delete_all
+    @game.rates.delete_all
+    @game.game_images.delete_all
     @game.destroy
     redirect_to admin_games_url
   end

@@ -1,7 +1,8 @@
 <div class="show_game">
+	
   <div class="row">
     <div class="span2" style="padding-right: 20px">
-      <%= image_tag @game.cover_image.thumb('128x128#').url %>
+			<%= image_tag @game.cover_image.thumb('128x128#').url %>
       <% if @game.price == 0 %>
         <% if @game.link %>
           <%= link_to image_tag("download.png"), @game.link %>
@@ -18,7 +19,7 @@
       <% end %>
     </div>
   
-    <div class="span4" style="margin-left: 0px">
+    <div class="span4" >			
       <div class="name">
         <h2><b><%= @game.name %></b></h2>
       </div>
@@ -52,13 +53,7 @@
         </script>
       <div class="fb-like"></div>
     </div>
-  </div>
-
-  <% if @game_images.count > 0 %>
-    <% @game_images.each do |game_image| %>
-      <%= image_tag(game_image.image_url) if !game_image.image_uid.nil? %>
-    <% end %>
-  <% end %>
+  </div>  
 
   <div class="info">
     <p><%= @game.info.gsub("\n","<br>").html_safe %></p>
@@ -66,11 +61,15 @@
 
   <div class="tabbable" style="margin-bottom: 18px;">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#comment" data-toggle="tab">Comment</a></li>
+      <li class="active"><a href="#screenshot" data-toggle="tab">Screenshot</a></li>
+			<li class=""><a href="#comment" data-toggle="tab">Comment</a></li>
       <li class=""><a href="#related" data-toggle="tab">Related</a></li>
     </ul>
     <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
-      <div class="tab-pane active" id="comment">
+			<div class="tab-pane active" id="screenshot">
+        <%= render "share/screenshot" %>
+      </div>
+      <div class="tab-pane" id="comment">
         <%= render "share/comment" %>
       </div>
       <div class="tab-pane" id="related">

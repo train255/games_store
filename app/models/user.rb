@@ -48,5 +48,5 @@ class User
     email == 'admin@ymail.com'
   end
   
-  fulltext_search_in :email
+  fulltext_search_in :email, :ngram_width => 1
 end

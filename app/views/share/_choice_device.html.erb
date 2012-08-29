@@ -1,0 +1,41 @@
+<div class="modal hide" id="<%= gid %>" >
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Choice</h3>
+  </div>
+	
+  <form action="<%= link_download_path %>">
+  <div class="modal-body">
+		<div class="row">
+			<div class="span5">
+    		<%= image_tag "/assets/iOS.jpg" %>
+			</div>
+		
+			<div class="span5 pull-right">
+				<%= image_tag "/assets/android.jpg" %>
+			</div>
+		</div>		
+		
+		<div class="row">
+			<div class="span4" style="padding-left: 80px">
+				<label class="radio">
+					<input type="radio" name="device" id="optionsRadios2" value="iOS" checked> <b>iOS</b>
+				</label>
+			</div>
+		
+			<div class="span4" style="padding-left: 80px">
+				<label class="radio">
+					<input type="radio" name="device" id="optionsRadios2" value="Android"> <b>Android</b>
+				</label>
+			</div>
+		</div>
+		
+		<input type="hidden" name="gameid" value="<%= gid %>">
+		
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+		<button type="submit" class="btn">Download</button>
+  </div>
+	</form>
+</div>

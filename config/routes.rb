@@ -8,11 +8,14 @@ GamesStore::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
+  match '/link_download', to: 'static_pages#link_download'
+  match '/games/search', to: 'games#search'
   
   match '/media/:dragonfly/:file_name', :to => Dragonfly[:images]
 
   resources :games do 
     resources :comments
+    
     member do
       get 'rating'
     end

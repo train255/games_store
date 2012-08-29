@@ -2,10 +2,9 @@
   <div class="navbar-inner">
     <div class="container container_header">
     <%= image_tag "icon.png", size: "24x24", id: "logo" %>
-      <%# link_to "Games store", '/', id: "logo",  class: "brand"%>
       <nav>
         <ul class="nav pull-left">
-        <li class="<%= 'active' if controller.action_name == 'index' %>" >
+        	<li class="<%= 'active' if controller.action_name == 'index' %>" >
           <%= link_to "Home", root_path %>
           </li>
           <li>
@@ -22,6 +21,10 @@
           <% end %>
         </ul>
 
+				<form class="navbar-search pull-left" action="<%= games_search_path %>">
+  				<input type="text" class="search-query span2" placeholder="Search" name="search_text">
+				</form>
+				
       </nav>
     </div>
   </div>
