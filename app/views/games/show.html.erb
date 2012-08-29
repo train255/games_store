@@ -1,14 +1,10 @@
 <div class="show_game">
-	
+	<%= render "share/choice_device", :gid => @game.id %>
   <div class="row">
     <div class="span2" style="padding-right: 20px">
 			<%= image_tag @game.cover_image.thumb('128x128#').url %>
       <% if @game.price == 0 %>
-        <% if @game.link %>
-          <%= link_to image_tag("download.png"), @game.link %>
-        <% else %>
-          <%= link_to image_tag("download.png"), "http://games.brothersoft.com/free-cat-games-download-s1.html"%>
-        <% end %>
+      	<%= link_to image_tag("download.png"), "##{@game.id}", html_options = { :"data-toggle" => "modal"} %>
       <% else %>
         <% if signed_in? %>
           <%= link_to image_tag("buynow.png"), '/payments/new' %>
