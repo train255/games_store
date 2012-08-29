@@ -28,7 +28,7 @@
         <td><%= image_tag game.cover_image.thumb('100x100#').url if game.cover_image_uid %></td>
 				<td><%= game.average_rating %></td>
         <td><%= game.name %></td>
-        <td><%= game.category.name %></td>
+        <td><%# game.category.name %></td>
         <td><%= game.is_hot %></td>
         <td><%= game.price %> VND</td>
         <td>
