@@ -7,15 +7,19 @@ class GamesController < ApplicationController
     @games_hot_banner = Game.game_hot.limit(3)
     @per_page = 2
     
+    if params[:category].nil?
+      params[:category] = "all"
+    end
+    
     if params[:game] == "hot"
-      if params[:category]
+      if params[:category] != "all"
         @cateid = params[:category]
         @games = Game.where(:category_id => params[:category]).game_hot.page(params[:page]).per(@per_page)
       else
         @games = Game.game_hot.page(params[:page]).per(@per_page)
       end
     elsif params[:game] == "top"
-      if params[:category]
+      if params[:category] != "all"
         @cateid = params[:category]
         @games = Game.where(:category_id => params[:category]).top_rated
       else
@@ -23,7 +27,7 @@ class GamesController < ApplicationController
       end
       @games = Kaminari.paginate_array(@games).page(params[:page]).per(@per_page)
     else
-      if params[:category]
+      if params[:category] != "all"
         @cateid = params[:category]
         @games = Game.where(:category_id => params[:category]).game_new.page(params[:page]).per(@per_page)
       else

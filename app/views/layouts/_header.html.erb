@@ -8,15 +8,18 @@
           <%= link_to "Home", root_path %>
           </li>
           <li>
-          <%= link_to "Help",    '#' %>
+          <%= link_to "Help", '#' %>
+          </li>
+					<li>
+          <%= link_to "Contact", '#' %>
           </li>
           <li class="<%= 'active' if controller.action_name == 'new' && controller.controller_name == 'registrations' %>" >
-          <%= link_to "Sign up", new_user_registration_path %>
           </li>
           <% if signed_in? %>
             <li><%= link_to current_user.email, '#' %>
             <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
           <% else %>
+						<li><%= link_to "Sign up", new_user_registration_path %>
             <li><%= link_to "Sign in", "#myModal", html_options = { :"data-toggle" => "modal"} %></li>
           <% end %>
         </ul>

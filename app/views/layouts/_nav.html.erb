@@ -1,8 +1,11 @@
 <ul class="nav nav-list">
   <% @caterogies = Category.all %>
   <li class="nav-header">
-  Caterogies
+	Caterogies
   </li>
+	<li class="<%= 'active' if params[:category] == 'all' %>">
+		<a href="<%= root_path %>?category=all">All</a>
+	</li>
   <% @caterogies.each do |caterogy| %>
   <li class="<%= 'active' if params[:category] == caterogy.id.to_s %>">
     <a href="<%= root_path %>?category=<%= caterogy.id %>"><%= caterogy.name %></a>
@@ -25,9 +28,9 @@
   Supports
   </li>
   <li>
-  <a href="#">Support 1</a>
+  <a href="#">support1@yahoo.com</a>
   </li>
   <li>
-  <a href="#">Support 2</a>
+  <a href="#">support2@yahoo.com</a>
   </li>
 </ul>
