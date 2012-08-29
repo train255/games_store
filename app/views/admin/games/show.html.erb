@@ -16,7 +16,7 @@
     <div class="tab-pane active" id="information">
       <p><%= image_tag @game.cover_image.thumb('100x100#').url %></p>
       <p><b>Name:</b><%= @game.name %></p>
-      <p><b>Category:</b><%= @game.category.name %></p>
+      <p><b>Category:</b><%= @game.category.name if @game.category.present? %></p>
       <p><b>Information:</b><%= @game.info.gsub("\n","<br>").html_safe %></p>
       <p><b>Hot Game:</b><%= @game.is_hot %></p>
       <p><b>Price:</b><%= @game.price %></p>
