@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   def index
     @actionpage = "index"
     @games_hot_banner = Game.game_hot.limit(3)
-    @per_page = 2
+    @per_page = 20
     
     if params[:category].nil?
       params[:category] = "all"

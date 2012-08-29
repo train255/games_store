@@ -30,7 +30,7 @@
 <div class="row">
    <% @games.each do |game| %>
 	
-   <div class="span2">
+   <div class="span2" style="width: 150px">
       <%= link_to image_tag(game.cover_image.thumb('100x100#').url,
       class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description),
       {:action => 'show', :controller => 'games', id: game} %>
@@ -41,13 +41,13 @@
       <p>
 				<%= render "share/choice_device", :gid => game.id %>
         <% if game.price == 0 %>
-          <%= link_to image_tag("download.png"), "##{game.id}", html_options = { :"data-toggle" => "modal"} %>
+          <%= link_to image_tag("download.png", size: "100x100"), "##{game.id}", html_options = { :"data-toggle" => "modal"} %>
         <% else %>
           <% if signed_in? %>
-            <%= link_to image_tag("buynow.png"), '/payments/new' %>
+            <%= link_to image_tag("buynow.png", size: "100x100"), '/payments/new' %>
             <%# binding.pry %>
           <% else%>
-            <%= link_to image_tag("buynow.png"), "#myModal", html_options = { :"data-toggle" => "modal"} %>
+            <%= link_to image_tag("buynow.png", size: "100x100"), "#myModal", html_options = { :"data-toggle" => "modal"} %>
           <% end %>
         <% end %>
       </p>
