@@ -34,7 +34,7 @@
       <%= link_to image_tag(game.cover_image.thumb('100x100#').url,
       class: "element_popover", rel: "popover", title: game.name, :"data-content" => game.description),
       {:action => 'show', :controller => 'games', id: game} %>
-      <p><b><%= game.name %></b></p>
+      <p id="text-overflow"><b><%= game.name %></b></p>
       <p>
 				<div class="rateit" data-rateit-value="<%= game.average_rating %>" data-rateit-readonly="true"></div>
 			</p>

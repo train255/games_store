@@ -143,3 +143,10 @@ form.simple_form.form-horizontal{
     word-wrap: break-word;  
   }
 }
+
+#text-overflow{
+  white-space: nowrap;
+  width: 75%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
