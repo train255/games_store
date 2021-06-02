@@ -29,7 +29,7 @@ end
 gem 'jquery-rails'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'rmagick'
-gem 'dragonfly', '~>0.9.12'
+gem 'dragonfly', '~>1.4.0'
 gem "pry"
 gem 'rb-readline'
 # To use ActiveModel has_secure_password
